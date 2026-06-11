@@ -18,6 +18,7 @@ export type ServiceDetailProps = {
   ctaHref?: string;
   ctaLabel?: string;
   muted?: boolean;
+  imageContain?: boolean;
 };
 
 export default function ServiceDetail({
@@ -32,6 +33,7 @@ export default function ServiceDetail({
   ctaHref,
   ctaLabel,
   muted = false,
+  imageContain = false,
 }: ServiceDetailProps) {
   return (
     <section className={muted ? "bg-surface" : "bg-white"}>
@@ -44,6 +46,7 @@ export default function ServiceDetail({
             transition={{ duration: 0.5, ease: "easeOut" }}
             className={cn(
               "relative aspect-[4/3] overflow-hidden rounded-2xl",
+              imageContain && "border border-line bg-white",
               imageRight && "lg:order-2"
             )}
           >
@@ -52,7 +55,7 @@ export default function ServiceDetail({
               alt={alt}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className={imageContain ? "object-contain p-6" : "object-cover"}
             />
             {priceBadge && (
               <span className="absolute right-4 top-4 rounded-full bg-accent px-4 py-2 text-sm font-bold text-white shadow-lg">

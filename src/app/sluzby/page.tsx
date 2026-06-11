@@ -25,8 +25,9 @@ export default function SluzbyPage() {
           "Součástí kurzu je zkouška na nečisto i jízda do Prahy, abyste byli připraveni na skutečný provoz, ne jen na zkušební okruh.",
         ]}
         image={images.prukazB}
-        alt="Žák autoškoly přebírá řidičský průkaz skupiny B"
+        alt="Vzor českého řidičského průkazu, přední a zadní strana"
         imageRight
+        imageContain
         listTitle="Podmínky pro přijetí"
         listItems={[
           "Věk 18 let (výcvik lze zahájit již v 17,5 letech)",
@@ -45,7 +46,7 @@ export default function SluzbyPage() {
           "Jízda do Prahy je součástí všech našich kurzů sk. B. Jistota z velkého města se vám bude hodit celý život.",
         ]}
         image={images.praha}
-        alt="Cvičná jízda autoškoly v pražském provozu"
+        alt="Jízda pražskou ulicí s Národním muzeem v pozadí"
         muted
       />
 

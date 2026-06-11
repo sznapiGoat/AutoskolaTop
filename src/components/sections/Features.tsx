@@ -8,7 +8,7 @@ const features = [
   {
     title: "Lidský přístup",
     image: images.procMy,
-    alt: "Instruktor autoškoly v klidu vysvětluje žákovi ovládání vozu",
+    alt: "Instruktor pomáhá žákovi s ovládáním vozu během jízdy městem",
     text: "Žádný křik, jen klid a pohoda. Moderní klimatizované auto, bonus 500 Kč a instruktor, který vás nenechá ve štychu.",
   },
   {

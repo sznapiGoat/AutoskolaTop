@@ -7,19 +7,29 @@ import SafeImage from "@/components/ui/SafeImage";
 import { images } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const services = [
+type ServiceTile = {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  large: boolean;
+  contain?: boolean;
+};
+
+const services: ServiceTile[] = [
   {
     title: "Řidičský průkaz sk. B",
     description: "Kompletní výcvik od první hodiny po závěrečnou zkoušku.",
     image: images.prukazB,
-    alt: "Žák autoškoly přebírá řidičský průkaz skupiny B",
+    alt: "Vzor českého řidičského průkazu, přední a zadní strana",
     large: true,
+    contain: true,
   },
   {
     title: "Jízdy do Prahy",
     description: "Připravíme vás i na provoz v hlavním městě.",
     image: images.praha,
-    alt: "Cvičná jízda autoškoly v pražském provozu",
+    alt: "Jízda pražskou ulicí s Národním muzeem v pozadí",
     large: true,
   },
   {
@@ -100,6 +110,7 @@ export default function Services() {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className={cn(
                 "group relative overflow-hidden rounded-2xl",
+                service.contain && "border border-line bg-white",
                 service.large
                   ? "min-h-[260px] sm:col-span-2 lg:min-h-[300px]"
                   : "min-h-[220px]"
@@ -110,7 +121,11 @@ export default function Services() {
                 alt={service.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
+                className={
+                  service.contain
+                    ? "object-contain p-6 pb-16"
+                    : "object-cover"
+                }
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 transition-colors duration-300 group-hover:from-black/70 group-hover:via-black/30 group-hover:to-black/10" />
               <div className="absolute inset-x-0 bottom-0 p-5">
