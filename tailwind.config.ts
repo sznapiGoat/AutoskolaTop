@@ -9,8 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        accent: {
+          DEFAULT: "#F97316",
+          hover: "#EA6C0A",
+        },
+        dark: "#0F172A",
+        body: "#111827",
+        muted: "#6B7280",
+        line: "#E5E7EB",
+        surface: "#F9FAFB",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
     },
   },
