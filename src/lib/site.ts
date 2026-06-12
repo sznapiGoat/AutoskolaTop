@@ -24,7 +24,8 @@ export const images = {
     "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000082-c1693c1694/A%20park.jpeg?ph=390ce95b86",
   kondicni:
     "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000064-6eef56eef8/A%20kon.jpeg?ph=390ce95b86",
-  skoleni: "/images/skoleni-referenti.webp",
+  skoleni: "/images/ucebna-panorama.jpg",
+  ucebna: "/images/ucebna-stul.jpg",
   vraceni:
     "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000068-bf02fbf030/A%20vrac.jpeg?ph=390ce95b86",
 };

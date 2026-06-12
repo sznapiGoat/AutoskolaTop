@@ -81,7 +81,7 @@ export default function SluzbyPage() {
           "Školení provádíme pro firmy i jednotlivce, prezenčně v naší učebně nebo po domluvě přímo u vás ve firmě. Po absolvování obdržíte potvrzení o školení.",
         ]}
         image={images.skoleni}
-        alt="Školení řidičů referentů v učebně"
+        alt="Učebna Autoškoly TOP s velkou obrazovkou a školicím stolem"
         imageRight
         priceBadge="500 Kč"
       />

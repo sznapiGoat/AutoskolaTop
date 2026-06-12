@@ -50,7 +50,7 @@ const services: ServiceTile[] = [
     title: "Školení řidičů",
     description: "Povinné školení řidičů referentů.",
     image: images.skoleni,
-    alt: "Školení řidičů referentů v učebně",
+    alt: "Učebna Autoškoly TOP s velkou obrazovkou a školicím stolem",
     large: false,
   },
   {

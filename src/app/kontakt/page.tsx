@@ -3,7 +3,8 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
 import PageHeader from "@/components/sections/PageHeader";
 import ContactForm from "@/components/sections/ContactForm";
-import { site } from "@/lib/site";
+import SafeImage from "@/components/ui/SafeImage";
+import { site, images } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt | Autoškola TOP Rakovník",
@@ -112,7 +113,17 @@ export default function KontaktPage() {
                 </span>
               </div>
 
-              <div className="mt-9 overflow-hidden rounded-2xl border border-line">
+              <div className="relative mt-9 aspect-[4/3] overflow-hidden rounded-2xl">
+                <SafeImage
+                  src={images.ucebna}
+                  alt="Učebna Autoškoly TOP s logem na stěně a připravenými učebnicemi"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="mt-6 overflow-hidden rounded-2xl border border-line">
                 <iframe
                   src="https://www.google.com/maps?q=Ottova+418,+269+01+Rakovn%C3%ADk&output=embed"
                   title="Mapa: Autoškola TOP, Ottova 418, Rakovník"
