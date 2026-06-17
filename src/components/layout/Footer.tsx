@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
+import Logo from "@/components/ui/Logo";
 import { site } from "@/lib/site";
 
 const navLinks = [
@@ -16,14 +17,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-lg font-black text-white">
-                A
-              </span>
-              <span className="text-lg font-extrabold tracking-tight">
-                Autoškola TOP
-              </span>
-            </div>
+            <Logo size="sm" className="text-white" />
             <p className="mt-4 text-sm leading-relaxed text-slate-300">
               Vyjeďte s námi tím správným směrem.
             </p>

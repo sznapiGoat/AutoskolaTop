@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import AnnouncementBar from "@/components/ui/AnnouncementBar";
+import Logo from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
@@ -46,19 +47,12 @@ export default function Navbar() {
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Hlavní navigace"
       >
-        <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-lg font-black text-white">
-            A
-          </span>
-          <span
-            className={cn(
-              "text-lg font-extrabold tracking-tight",
-              scrolled || open || pathname !== "/" ? "text-body" : "text-white"
-            )}
-          >
-            Autoškola TOP
-          </span>
-        </Link>
+        <Logo
+          size="sm"
+          className={cn(
+            scrolled || open || pathname !== "/" ? "text-body" : "text-white"
+          )}
+        />
 
         <div className="hidden items-center gap-1 md:flex">
           {links.map((link) => {

@@ -7,17 +7,27 @@ html {
 }
 
 body {
-  color: #111827;
+  color: #1b1e25;
   background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), var(--font-inter), system-ui, sans-serif;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 ::selection {
-  background: #f97316;
+  background: #f26419;
   color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid #f97316;
+  outline: 2px solid #f26419;
   outline-offset: 2px;
 }
 
