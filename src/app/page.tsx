@@ -1,17 +1,27 @@
-import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
-import Features from "@/components/sections/Features";
-import Services from "@/components/sections/Services";
-import CTABanner from "@/components/sections/CTABanner";
+import { Hero } from "@/components/home/Hero";
+import { ProofStrip } from "@/components/home/ProofStrip";
+import { WhyUs } from "@/components/home/WhyUs";
+import { ServicesRail } from "@/components/home/ServicesRail";
+import { RoadProcess } from "@/components/home/RoadProcess";
+import { PricingPreview } from "@/components/home/PricingPreview";
+import { InstagramStrip } from "@/components/home/InstagramStrip";
+import { CharityTeaser } from "@/components/home/CharityTeaser";
+import { FaqPreview } from "@/components/home/FaqPreview";
+import { CtaBand } from "@/components/sections/CtaBand";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
-      <Features />
-      <Services />
-      <CTABanner />
+      <ProofStrip />
+      <WhyUs />
+      <ServicesRail />
+      <RoadProcess />
+      <PricingPreview />
+      <InstagramStrip />
+      <CharityTeaser />
+      <FaqPreview />
+      <CtaBand />
     </>
   );
 }

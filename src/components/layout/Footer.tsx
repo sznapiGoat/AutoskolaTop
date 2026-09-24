@@ -1,114 +1,106 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
-import Logo from "@/components/ui/Logo";
-import { site } from "@/lib/site";
+import { FacebookLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { Logo } from "@/components/brand/Logo";
+import { services } from "@/lib/content";
+import { nav, site } from "@/lib/site";
 
-const navLinks = [
-  { href: "/", label: "Úvod" },
-  { href: "/sluzby", label: "Služby" },
-  { href: "/cenik", label: "Ceník" },
-  { href: "/kontakt", label: "Kontakt" },
-];
-
-export default function Footer() {
+export function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-dark text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <Logo size="sm" className="text-white" />
-            <p className="mt-4 text-sm leading-relaxed text-slate-300">
-              Vyjeďte s námi tím správným směrem.
+    <footer className="asphalt relative overflow-hidden text-[#d9d8d3]">
+      {/* dashed centre line, the "road" the footer sits on */}
+      <div
+        aria-hidden="true"
+        className="h-1.5 w-full bg-[repeating-linear-gradient(90deg,#f26b1d_0_48px,transparent_48px_88px)] opacity-90"
+      />
+      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="max-w-sm">
+          <Link href="/" aria-label="Autoškola TOP, úvodní stránka" className="inline-block rounded-lg [&_.text-ink]:text-white [&_.text-muted]:text-[#a6a59f]">
+            <Logo />
+          </Link>
+          <p className="mt-5 leading-relaxed text-[#a6a59f]">{site.tagline} Autoškola pro Rakovník a okolí.</p>
+          <div className="mt-6 flex gap-2">
+            {[
+              { href: site.social.facebook, label: "Facebook", Icon: FacebookLogo },
+              { href: site.social.instagram, label: "Instagram", Icon: InstagramLogo },
+              { href: site.whatsappHref, label: "WhatsApp", Icon: WhatsappLogo },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="grid size-11 place-items-center rounded-full border border-white/10 text-white transition-colors hover:border-accent hover:bg-accent hover:text-[#151514]"
+              >
+                <Icon size={20} weight="fill" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <nav aria-label="Služby">
+          <h2 className="text-sm font-semibold text-white">Služby</h2>
+          <ul className="mt-4 space-y-2.5">
+            {services.map((s) => (
+              <li key={s.slug}>
+                <Link href={`/sluzby/${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
+                  {s.short}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="Stránky">
+          <h2 className="text-sm font-semibold text-white">Autoškola</h2>
+          <ul className="mt-4 space-y-2.5">
+            {[...nav, { href: "/kontakt", label: "Kontakt" }].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[#a6a59f] transition-colors hover:text-white">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <h2 className="text-sm font-semibold text-white">Kontakt</h2>
+          <address className="mt-4 space-y-2.5 not-italic text-[#a6a59f]">
+            <p>
+              {site.address.street}, {site.address.zip} {site.address.city}
+              <br />
+              <span className="text-sm">{site.address.note}</span>
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">
-              Jsme hrdými partnery FBC Rakovník.
+            <p>
+              <a href={site.phoneHref} className="text-lg font-semibold text-white hover:text-accent">
+                {site.phone}
+              </a>
             </p>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-              Navigace
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-slate-300 transition-colors duration-200 hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-              Kontakt
-            </h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  href={site.phoneHref}
-                  className="flex items-center gap-2.5 text-sm text-slate-300 transition-colors duration-200 hover:text-accent"
-                >
-                  <Phone className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  {site.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="flex items-center gap-2.5 text-sm text-slate-300 transition-colors duration-200 hover:text-accent"
-                >
-                  <Mail className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  {site.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-2.5 text-sm text-slate-300">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                {site.address}
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-              Provozní doba
-            </h3>
-            <p className="mt-4 text-sm text-slate-300">{site.hours}</p>
-            <p className="mt-1 text-sm text-slate-400">{site.hoursNote}</p>
-            <div className="mt-5 flex gap-3">
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition-colors duration-200 hover:bg-accent hover:text-white"
-                aria-label="Facebook"
-              >
-                <FacebookIcon className="h-4 w-4" />
-              </span>
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition-colors duration-200 hover:bg-accent hover:text-white"
-                aria-label="Instagram"
-              >
-                <InstagramIcon className="h-4 w-4" />
-              </span>
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition-colors duration-200 hover:bg-accent hover:text-white"
-                aria-label="WhatsApp"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-              </span>
-            </div>
-          </div>
+            <p>
+              <a href={`mailto:${site.email}`} className="hover:text-white">
+                {site.email}
+              </a>
+            </p>
+            <p className="text-sm">
+              {site.hours.label}, {site.hours.note}
+            </p>
+          </address>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-slate-400">
-            © 2025 Autoškola TOP | okr. Rakovník
+        <div className="container-page flex flex-col gap-3 py-6 text-sm text-[#8b8a85] sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {site.legalName}, IČO {site.ico}
           </p>
+          <div className="flex gap-5">
+            <Link href="/ochrana-osobnich-udaju" className="hover:text-white">
+              Ochrana osobních údajů
+            </Link>
+            <span>Partner FBC Rakovník</span>
+          </div>
         </div>
       </div>
     </footer>

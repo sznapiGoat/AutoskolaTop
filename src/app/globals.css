@@ -1,38 +1,170 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+/*
+  Brand tokens. Accent is the copper orange of the school car,
+  ink is the black of its decals. Neutrals are cool-neutral on purpose.
+*/
+:root {
+  --bg: #f6f6f4;
+  --surface: #fdfdfc;
+  --surface-2: #efefec;
+  --ink: #151514;
+  --muted: #5d5c57;
+  --line: #e2e1dd;
+  --accent: #f26b1d;
+  --accent-hover: #e05d12;
+  --accent-text: #b4470b;
+  --accent-soft: #fde8da;
+  --on-accent: #151514;
+  --road: #1c1c1a;
+  --panel: #151514;
+  --panel-ink: #f2f1ee;
+  --shadow: 24 20 16;
 }
 
-body {
-  color: #1b1e25;
-  background: #ffffff;
-  -webkit-font-smoothing: antialiased;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e0e0d;
+    --surface: #171715;
+    --surface-2: #1f1f1c;
+    --ink: #f2f1ee;
+    --muted: #a6a59f;
+    --line: #2c2b28;
+    --accent: #f47a33;
+    --accent-hover: #ff8a47;
+    --accent-text: #ff9a5c;
+    --accent-soft: #2b1a0f;
+    --on-accent: #151514;
+    --road: #0a0a09;
+    --panel: #232320;
+    --panel-ink: #f2f1ee;
+    --shadow: 0 0 0;
+  }
 }
 
-h1,
-h2,
-h3,
-.font-display {
-  font-family: var(--font-display), var(--font-inter), system-ui, sans-serif;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-road: var(--road);
+  /* Dark feature cards: stay dark in both themes (unlike ink, which inverts). */
+  --color-panel: var(--panel);
+  --color-panel-ink: var(--panel-ink);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
+
+  --radius-card: 1.25rem;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 60s linear infinite;
 }
 
-::selection {
-  background: #f26419;
-  color: #ffffff;
+/*
+  Above-the-fold entrance animations run in CSS, so they start on first paint
+  instead of waiting for hydration (keeps LCP fast). Stagger with --delay.
+*/
+@keyframes rise {
+  from { transform: translateY(110%); }
+  to { transform: none; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes settle {
+  from { transform: scale(1.08); }
+  to { transform: none; }
 }
 
-:focus-visible {
-  outline: 2px solid #f26419;
-  outline-offset: 2px;
+@utility animate-rise {
+  animation: rise 0.85s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0s);
+}
+@utility animate-fade-up {
+  animation: fade-up 0.7s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0s);
+}
+@utility animate-settle {
+  animation: settle 1.4s var(--ease-out-expo) both;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1320px;
+  padding-inline: 1rem;
+  @media (width >= 640px) { padding-inline: 1.5rem; }
+  @media (width >= 1024px) { padding-inline: 2.5rem; }
+}
+
+/* Horizontal rails that bleed to the viewport edge but start aligned with .container-page. */
+@utility rail-inset {
+  --gutter: 1rem;
+  padding-inline: max(var(--gutter), calc((100vw - 1320px) / 2 + var(--gutter)));
+  scroll-padding-inline: max(var(--gutter), calc((100vw - 1320px) / 2 + var(--gutter)));
+  @media (width >= 640px) { --gutter: 1.5rem; }
+  @media (width >= 1024px) { --gutter: 2.5rem; }
+}
+
+@utility shadow-soft {
+  box-shadow: 0 1px 0 rgb(var(--shadow) / 0.04), 0 18px 40px -18px rgb(var(--shadow) / 0.22);
+}
+
+/* Road texture used on dark "asphalt" surfaces. */
+@utility asphalt {
+  background-color: var(--road);
+  background-image:
+    radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    radial-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px;
+  background-position: 0 0, 3px 5px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
