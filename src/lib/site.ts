@@ -1,3 +1,5 @@
+import { services } from "./content";
+
 export const site = {
   name: "Autoškola TOP",
   legalName: "Autoškola Top Rakovník",
@@ -44,12 +46,17 @@ export function isPromoActive(now = new Date()) {
   return now <= new Date(promo.until);
 }
 
-export const nav = [
-  { href: "/sluzby", label: "Služby a ceník" },
+const servicesNav = services.map((s) => ({ href: `/sluzby/${s.slug}`, label: s.short }));
+
+export type NavItem = { href: string; label: string; children?: { href: string; label: string }[] };
+
+export const nav: NavItem[] = [
+  { href: "/sluzby", label: "Služby", children: servicesNav },
+  { href: "/cenik", label: "Ceník" },
   { href: "/caste-dotazy", label: "Časté dotazy" },
   { href: "/o-nas", label: "O nás" },
   { href: "/kontakt", label: "Kontakt" },
-] as const;
+];
 
 export function formatPrice(value: number) {
   return `${value.toLocaleString("cs-CZ").replace(/\s/g, " ")} Kč`;

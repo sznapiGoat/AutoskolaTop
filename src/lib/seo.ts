@@ -94,7 +94,7 @@ export function serviceLd(service: Service) {
     "@type": "Service",
     name: service.name,
     description: service.seoDescription,
-    url: `${site.url}/sluzby#${service.slug}`,
+    url: `${site.url}/sluzby/${service.slug}`,
     provider: { "@id": businessId },
     areaServed: "Rakovník",
     offers: {

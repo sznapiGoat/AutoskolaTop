@@ -62,7 +62,7 @@ export function ServicesRail() {
               className="h-full"
             >
               <Link
-                href={`/sluzby#${s.slug}`}
+                href={`/sluzby/${s.slug}`}
                 className="group flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface transition-shadow hover:shadow-soft"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-surface-2">
