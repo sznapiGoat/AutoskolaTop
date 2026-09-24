@@ -18,17 +18,19 @@ npm run lint && npm run typecheck
 | `src/lib/site.ts` | Contact info, nav, time-limited promo (`promo.until` hides it automatically) |
 | `src/lib/content.ts` | Services, price plans, fees, FAQ, process steps. **Edit texts here.** |
 | `src/lib/seo.ts` | Page metadata + JSON-LD (DrivingSchool, Service, FAQPage, BreadcrumbList) |
-| `src/app/**` | Pages: `/`, `/sluzby`, `/sluzby/[slug]`, `/cenik`, `/jak-to-probiha`, `/caste-dotazy`, `/o-nas`, `/pomahame`, `/kontakt`, `/ochrana-osobnich-udaju` |
-| `src/app/icon.svg`, `favicon.ico`, `apple-icon.png`, `opengraph-image.jpg` | Logo mark (road that forms the "A"), favicons, social card |
+| `src/app/**` | Pages: `/`, `/sluzby` (all services, price list, course process, with sticky in-page nav), `/caste-dotazy`, `/o-nas` (incl. `#pomahame`), `/kontakt`, `/ochrana-osobnich-udaju` |
+| `public/brand/*.svg` | The school's own logo, vectorised: `logo-solid` (header/footer), `logo-textured` (large), `emblem` (wings + TOP, for icons). Colours via `--logo-ink/--logo-top/--logo-sig`. |
+| `src/components/brand/Wings.tsx` | The logo's wing stripes, used as the graphic motif (unfold with anime.js) |
+| `src/app/icon.svg`, `favicon.ico`, `apple-icon.png`, `opengraph-image.jpg` | Favicons from the logo emblem, social card |
 | `public/images` | Client photos (car, classroom) from the old site + Instagram/Facebook |
 
-Old Webnode URLs (`/conabizime`, `/dobrocinna-akce`) permanently redirect to the new pages (`next.config.ts`).
+Old Webnode URLs (`/conabizime`, `/dobrocinna-akce`) and the merged v1 pages (`/cenik`, `/jak-to-probiha`, `/pomahame`, `/sluzby/:slug`) permanently redirect to the matching section (`next.config.ts`).
 
 ## Motion
 
 - Above-the-fold entrances (hero headline, page titles, hero images) are **pure CSS** (`animate-rise`, `animate-fade-up`, `animate-settle` in `globals.css`), so they never wait for hydration and don't hurt LCP.
 - Below the fold: `Reveal` / `RevealGroup` (Motion `whileInView`), the scroll-driven road timeline (`RoadProcess`), sliding nav/tab pills (`layoutId`).
-- anime.js: logo "road lights up" on hover, number counters in `ProofStrip`.
+- anime.js: the logo's wing stripes unfold on scroll (`Wings`), number counters in `ProofStrip`.
 - Everything respects `prefers-reduced-motion`.
 
 ## Before launch

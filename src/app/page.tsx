@@ -2,7 +2,6 @@ import { Hero } from "@/components/home/Hero";
 import { ProofStrip } from "@/components/home/ProofStrip";
 import { WhyUs } from "@/components/home/WhyUs";
 import { ServicesRail } from "@/components/home/ServicesRail";
-import { RoadProcess } from "@/components/home/RoadProcess";
 import { PricingPreview } from "@/components/home/PricingPreview";
 import { InstagramStrip } from "@/components/home/InstagramStrip";
 import { CharityTeaser } from "@/components/home/CharityTeaser";
@@ -16,7 +15,6 @@ export default function HomePage() {
       <ProofStrip />
       <WhyUs />
       <ServicesRail />
-      <RoadProcess />
       <PricingPreview />
       <InstagramStrip />
       <CharityTeaser />

@@ -34,7 +34,7 @@ export default function FaqPage() {
               Volejte {site.hours.label.toLowerCase()}, nebo nám napište. Rádi poradíme.
             </p>
             <div className="mt-6 grid gap-3">
-              <a href={site.phoneHref} className={buttonClass("dark", "lg")}>
+              <a href={site.phoneHref} className={buttonClass("primary", "lg")}>
                 <Phone size={18} weight="bold" aria-hidden="true" />
                 {site.phoneDisplay}
               </a>
