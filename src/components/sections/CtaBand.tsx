@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone } from "@phosphor-icons/react/dist/ssr";
+import { IconPhone } from "@/components/icons/Icons";
 import { Wings } from "@/components/brand/Wings";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -28,7 +28,7 @@ export function CtaBand({
                 href={site.phoneHref}
                 className="inline-flex h-13 items-center gap-2 rounded-lg px-4 font-semibold transition-colors hover:text-accent"
               >
-                <Phone size={18} weight="bold" aria-hidden="true" />
+                <IconPhone size={18} aria-hidden="true" />
                 {site.phoneDisplay}
               </a>
             </div>

@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
+import { IconArrowLeft, IconArrowRight, IconArrowUpRight } from "@/components/icons/Icons";
+import { ServiceIcon } from "@/components/icons/ServiceIcon";
 import { services } from "@/lib/content";
 import { formatPrice } from "@/lib/site";
 
@@ -41,7 +42,7 @@ export function ServicesRail() {
               aria-label={dir === -1 ? "Předchozí služby" : "Další služby"}
               className="grid size-12 place-items-center rounded-full border border-line bg-surface text-ink transition-colors hover:border-ink active:scale-95"
             >
-              {dir === -1 ? <ArrowLeft size={20} weight="bold" /> : <ArrowRight size={20} weight="bold" />}
+              {dir === -1 ? <IconArrowLeft size={20} /> : <IconArrowRight size={20} />}
             </button>
           ))}
         </div>
@@ -76,9 +77,12 @@ export function ServicesRail() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-display text-2xl font-semibold">{s.short}</h3>
+                    <h3 className="flex items-center gap-2.5 font-display text-2xl font-semibold">
+                      <ServiceIcon slug={s.slug} size={24} className="shrink-0" />
+                      {s.short}
+                    </h3>
                     <span className="grid size-10 shrink-0 place-items-center rounded-full bg-surface-2 transition-colors group-hover:bg-accent group-hover:text-on-accent">
-                      <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+                      <IconArrowUpRight size={18} aria-hidden="true" />
                     </span>
                   </div>
                   <p className="mt-2 flex-1 leading-relaxed text-muted">{s.pitch}</p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { CheckCircle, CircleNotch, WarningCircle } from "@phosphor-icons/react";
+import { IconCheckTile, IconSpinner, IconWarning } from "@/components/icons/Icons";
 import { sendInquiry } from "@/app/kontakt/actions";
 import { serviceOptions, type InquiryState } from "@/lib/inquiry";
 import { buttonClass } from "@/components/ui/Button";
@@ -45,7 +45,7 @@ function Field({
       )}
       {error && (
         <p id={`${id}-error`} className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c] dark:text-[#ff9a5c]">
-          <WarningCircle size={16} weight="fill" aria-hidden="true" />
+          <IconWarning size={16} aria-hidden="true" />
           {error}
         </p>
       )}
@@ -72,7 +72,7 @@ export function ContactForm() {
           className="rounded-[var(--radius-card)] border border-line bg-surface p-8 md:p-10"
           role="status"
         >
-          <CheckCircle size={48} weight="fill" className="text-accent" aria-hidden="true" />
+          <IconCheckTile size={48} className="text-accent" aria-hidden="true" />
           <h2 className="mt-6 font-display text-3xl font-bold">Děkujeme, máme to.</h2>
           <p className="mt-3 max-w-md text-lg text-muted">
             Ozveme se vám co nejdřív, obvykle telefonicky. Pokud spěcháte, zavolejte na{" "}
@@ -195,14 +195,14 @@ export function ContactForm() {
             </label>
             {e.consent && (
               <p id="consent-error" className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c] dark:text-[#ff9a5c]">
-                <WarningCircle size={16} weight="fill" aria-hidden="true" />
+                <IconWarning size={16} aria-hidden="true" />
                 {e.consent}
               </p>
             )}
           </div>
 
           <button type="submit" disabled={pending} className={buttonClass("primary", "lg", "mt-2 w-full disabled:opacity-70 sm:w-auto sm:justify-self-start")}>
-            {pending && <CircleNotch size={18} weight="bold" className="animate-spin" aria-hidden="true" />}
+            {pending && <IconSpinner size={18} className="animate-spin" aria-hidden="true" />}
             {pending ? "Odesílám" : "Odeslat přihlášku"}
           </button>
         </motion.form>

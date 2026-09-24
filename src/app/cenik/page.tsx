@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, CalendarCheck, Coins, Info, Receipt } from "@phosphor-icons/react/dist/ssr";
+import { IconArrowUpRight, IconCalendar, IconCoins, IconInfo, IconReceipt } from "@/components/icons/Icons";
+import { IconTile, ServiceIcon } from "@/components/icons/ServiceIcon";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlanCards } from "@/components/sections/PlanCards";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -19,9 +20,9 @@ export const metadata = pageMeta({
 });
 
 const payment = [
-  { Icon: Coins, title: "Záloha při nástupu", text: "Minimálně 10 000 Kč, když začínáte kurz." },
-  { Icon: CalendarCheck, title: "Doplatek", text: "Nejpozději 14 dní před ukončením kurzu." },
-  { Icon: Receipt, title: "Cena je konečná", text: "Nezahrnuje jen správní poplatek za zkoušku, který platíte úřadu." },
+  { Icon: IconCoins, title: "Záloha při nástupu", text: "Minimálně 10 000 Kč, když začínáte kurz." },
+  { Icon: IconCalendar, title: "Doplatek", text: "Nejpozději 14 dní před ukončením kurzu." },
+  { Icon: IconReceipt, title: "Cena je konečná", text: "Nezahrnuje jen správní poplatek za zkoušku, který platíte úřadu." },
 ];
 
 const paymentFaqs = faqs.filter((f) => f.category === "Platba");
@@ -58,7 +59,7 @@ export default function PricingPage() {
             <RevealGroup className="mt-8 grid gap-3">
               {payment.map(({ Icon, title, text }) => (
                 <RevealItem key={title} className="flex gap-4 rounded-[var(--radius-card)] bg-surface p-5">
-                  <Icon size={28} weight="duotone" className="shrink-0 text-accent-text" aria-hidden="true" />
+                  <Icon size={28} className="shrink-0 text-accent-text" aria-hidden="true" />
                   <span>
                     <span className="block font-semibold">{title}</span>
                     <span className="text-muted">{text}</span>
@@ -81,7 +82,7 @@ export default function PricingPage() {
               ))}
             </ul>
             <p className="mt-4 flex gap-2 text-sm text-muted">
-              <Info size={18} className="shrink-0" aria-hidden="true" />
+              <IconInfo size={18} className="shrink-0" aria-hidden="true" />
               Jízdu, na kterou nemůžete, stačí omluvit alespoň 8 hodin předem. Pak je zdarma.
             </p>
           </div>
@@ -99,13 +100,18 @@ export default function PricingPage() {
                 href={`/sluzby/${s.slug}`}
                 className="group flex items-center justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-surface p-5 transition-colors hover:border-ink"
               >
-                <span>
-                  <span className="block font-display text-xl font-bold uppercase">{s.name}</span>
-                  <span className="text-sm text-muted">{s.priceNote}</span>
+                <span className="flex items-center gap-4">
+                  <IconTile className="size-12">
+                    <ServiceIcon slug={s.slug} size={24} />
+                  </IconTile>
+                  <span>
+                    <span className="block font-display text-xl font-bold uppercase">{s.name}</span>
+                    <span className="text-sm text-muted">{s.priceNote}</span>
+                  </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-3">
                   <span className="font-display text-2xl font-bold tabular-nums">{formatPrice(s.price)}</span>
-                  <ArrowUpRight size={18} weight="bold" className="text-muted transition-colors group-hover:text-ink" aria-hidden="true" />
+                  <IconArrowUpRight size={18} className="text-muted transition-colors group-hover:text-ink" aria-hidden="true" />
                 </span>
               </Link>
             </li>

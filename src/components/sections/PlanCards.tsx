@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check } from "@phosphor-icons/react/dist/ssr";
+import { IconCheck } from "@/components/icons/Icons";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { buttonClass } from "@/components/ui/Button";
 import { plans } from "@/lib/content";
@@ -39,7 +39,7 @@ export function PlanCards({ compact = false }: { compact?: boolean }) {
             <ul className="mt-6 flex-1 space-y-3">
               {plan.features.map((f) => (
                 <li key={f} className="flex gap-2.5 text-[0.95rem]">
-                  <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                  <IconCheck size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                   {f}
                 </li>
               ))}

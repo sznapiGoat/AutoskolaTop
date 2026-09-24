@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Car, Buildings, SmileyWink, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import { IconCalm, IconCar, IconCity, IconFriends } from "@/components/icons/Icons";
+import { IconTile } from "@/components/icons/ServiceIcon";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { reasons } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-const icons = [SmileyWink, Buildings, Car, UsersThree];
+const icons = [IconCalm, IconCity, IconCar, IconFriends];
 const photos: Record<number, string> = {
   1: "/images/jizda-praha.webp",
   2: "/images/autoskola-top-instruktor-vuz.webp",
@@ -64,12 +65,9 @@ export function WhyUs() {
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/50 to-black/10" />
                 </>
               )}
-              <Icon
-                size={32}
-                weight="duotone"
-                aria-hidden="true"
-                className={cn(variant === "plain" ? "text-accent-text" : "opacity-90")}
-              />
+              <IconTile tone={variant === "photo" ? "dark" : variant === "accent" ? "accent" : "light"} className="self-start">
+                <Icon size={30} />
+              </IconTile>
               <div className="mt-10">
                 <h3 className="font-display text-2xl font-semibold">{r.title}</h3>
                 <p className={cn("mt-2 leading-relaxed", variant === "plain" ? "text-muted" : "opacity-85")}>{r.text}</p>

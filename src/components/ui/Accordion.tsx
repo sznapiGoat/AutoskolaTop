@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { motion } from "motion/react";
-import { Plus } from "@phosphor-icons/react";
+import { IconPlus } from "@/components/icons/Icons";
 import { cn } from "@/lib/utils";
 
 export type AccordionItem = { id: string; q: string; a: string };
@@ -33,7 +33,7 @@ export function Accordion({ items, className }: { items: AccordionItem[]; classN
                     isOpen && "rotate-45 border-accent bg-accent text-on-accent",
                   )}
                 >
-                  <Plus size={16} weight="bold" aria-hidden="true" />
+                  <IconPlus size={16} aria-hidden="true" />
                 </span>
               </button>
             </h3>

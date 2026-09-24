@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Image from "next/image";
-import { ArrowRight, CaretDown, List, Phone, X } from "@phosphor-icons/react";
+import { IconArrowRight, IconCaretDown, IconClose, IconMenu, IconPhone } from "@/components/icons/Icons";
 import { BrandLogo } from "@/components/brand/Logo";
 import { LogoLink } from "@/components/brand/LogoLink";
 import { buttonClass } from "@/components/ui/Button";
@@ -105,7 +105,7 @@ export function Header() {
                         aria-label="Zobrazit jednotlivé služby"
                         className="-ml-3 grid size-8 place-items-center rounded-md text-muted transition-colors hover:text-ink"
                       >
-                        <CaretDown size={14} weight="bold" className={cn("transition-transform", dropdown && "rotate-180")} />
+                        <IconCaretDown size={14} className={cn("transition-transform", dropdown && "rotate-180")} />
                       </button>
                       <AnimatePresence>
                         {dropdown && (
@@ -145,11 +145,11 @@ export function Header() {
                               <div className="mt-2 flex items-center justify-between rounded-lg bg-surface-2 px-4 py-3 text-sm font-semibold">
                                 <Link href="/sluzby" className="group inline-flex items-center gap-1.5 hover:text-accent-text">
                                   Přehled služeb a průběh kurzu
-                                  <ArrowRight size={14} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
+                                  <IconArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                                 </Link>
                                 <Link href="/cenik" className="group inline-flex items-center gap-1.5 hover:text-accent-text">
                                   Ceník
-                                  <ArrowRight size={14} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
+                                  <IconArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                                 </Link>
                               </div>
                             </div>
@@ -168,7 +168,7 @@ export function Header() {
               href={site.phoneHref}
               className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-ink transition-colors hover:text-accent-text md:inline-flex"
             >
-              <Phone size={18} weight="bold" aria-hidden="true" />
+              <IconPhone size={18} aria-hidden="true" />
               {site.phoneDisplay}
             </a>
             <Link href="/kontakt" className={buttonClass("primary", "md", "hidden sm:inline-flex")}>
@@ -186,7 +186,7 @@ export function Header() {
               aria-label={open ? "Zavřít menu" : "Otevřít menu"}
               className="grid size-11 place-items-center rounded-lg border border-line bg-surface text-ink lg:hidden"
             >
-              {open ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
+              {open ? <IconClose size={20} /> : <IconMenu size={20} />}
             </button>
           </div>
         </div>
@@ -247,7 +247,7 @@ export function Header() {
                   Chci řidičák
                 </Link>
                 <a href={site.phoneHref} className={buttonClass("outline", "lg")}>
-                  <Phone size={18} weight="bold" aria-hidden="true" />
+                  <IconPhone size={18} aria-hidden="true" />
                   {site.phone}
                 </a>
               </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
-import { ArrowRight, CarProfile } from "@phosphor-icons/react";
+import { IconArrowRight, IconCar } from "@/components/icons/Icons";
 import { steps } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -40,7 +40,7 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
             {!reduce && (
               <motion.div style={{ top: carTop }} className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <span className="grid size-10 rotate-90 place-items-center rounded-full bg-accent text-[#151514] shadow-[0_0_0_6px_rgb(242_107_29/0.2)]">
-                  <CarProfile size={22} weight="fill" />
+                  <IconCar size={22} />
                 </span>
               </motion.div>
             )}
@@ -78,7 +78,7 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
               className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-[#ff8a47]"
             >
               Jak přesně kurz probíhá
-              <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
         )}

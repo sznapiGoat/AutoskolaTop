@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, FileText, FirstAidKit, IdentificationCard } from "@phosphor-icons/react/dist/ssr";
+import { IconArrowUpRight, IconDocument, IconIdCard, IconMedical } from "@/components/icons/Icons";
 import { Wings } from "@/components/brand/Wings";
+import { IconTile, ServiceIcon } from "@/components/icons/ServiceIcon";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { RoadProcess } from "@/components/home/RoadProcess";
@@ -19,9 +20,9 @@ export const metadata = pageMeta({
 });
 
 const documents = [
-  { Icon: FileText, title: "Žádost o přijetí k výuce a výcviku", text: "Formulář, který vyplníte u nás při zápisu." },
-  { Icon: FirstAidKit, title: "Posudek od praktického lékaře", text: "Lékař potvrdí zdravotní způsobilost přímo na žádosti." },
-  { Icon: IdentificationCard, title: "Občanský průkaz", text: "Pro ověření totožnosti a trvalého pobytu v ČR." },
+  { Icon: IconDocument, title: "Žádost o přijetí k výuce a výcviku", text: "Formulář, který vyplníte u nás při zápisu." },
+  { Icon: IconMedical, title: "Posudek od praktického lékaře", text: "Lékař potvrdí zdravotní způsobilost přímo na žádosti." },
+  { Icon: IconIdCard, title: "Občanský průkaz", text: "Pro ověření totožnosti a trvalého pobytu v ČR." },
 ];
 
 export default function ServicesPage() {
@@ -60,7 +61,7 @@ export default function ServicesPage() {
                 od <span className="font-display text-4xl font-bold text-panel-ink">{formatPrice(main.price)}</span>
               </p>
               <span className="grid size-14 place-items-center rounded-lg bg-panel-ink text-panel transition-colors group-hover:bg-accent group-hover:text-on-accent">
-                <ArrowUpRight size={24} weight="bold" aria-hidden="true" />
+                <IconArrowUpRight size={24} aria-hidden="true" />
               </span>
             </div>
           </div>
@@ -83,12 +84,15 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <IconTile className="mb-5">
+                    <ServiceIcon slug={s.slug} size={28} />
+                  </IconTile>
                   <h2 className="font-display text-3xl font-extrabold">{s.name}</h2>
                   <p className="mt-2 flex-1 leading-relaxed text-muted">{s.pitch}</p>
                   <div className="mt-6 flex items-center justify-between">
                     <p className="font-display text-2xl font-bold">{formatPrice(s.price)}</p>
                     <span className="grid size-10 place-items-center rounded-lg bg-surface-2 transition-colors group-hover:bg-accent group-hover:text-on-accent">
-                      <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+                      <IconArrowUpRight size={18} aria-hidden="true" />
                     </span>
                   </div>
                 </div>
@@ -109,7 +113,7 @@ export default function ServicesPage() {
             {documents.map(({ Icon, title, text }) => (
               <RevealItem key={title} className="rounded-[var(--radius-card)] border border-line bg-surface p-7">
                 <span className="grid size-12 place-items-center rounded-lg bg-accent-soft text-accent-text">
-                  <Icon size={24} weight="duotone" aria-hidden="true" />
+                  <Icon size={24} aria-hidden="true" />
                 </span>
                 <h3 className="mt-6 font-display text-2xl font-bold">{title}</h3>
                 <p className="mt-2 text-muted">{text}</p>

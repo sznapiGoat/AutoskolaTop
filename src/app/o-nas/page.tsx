@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Briefcase, FacebookLogo, HandHeart, HouseLine, InstagramLogo, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/dist/ssr";
+import { IconBriefcase, IconFriends, IconHeart, IconHome } from "@/components/icons/Icons";
 import { Wings } from "@/components/brand/Wings";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -18,10 +19,10 @@ export const metadata = pageMeta({
 });
 
 const charityBenefits = [
-  { Icon: HandHeart, title: "Plně hrazený kurz", text: "Od první hodiny teorie až po poslední 28. hodinu jízdy." },
-  { Icon: Briefcase, title: "Šance na lepší práci", text: "Řada pracovních pozic dnes řidičák vyžaduje." },
-  { Icon: HouseLine, title: "Svoboda a samostatnost", text: "Snazší cesta za rodinou, k lékaři nebo do školy." },
-  { Icon: UsersThree, title: "Podpora komunity", text: "Pocit, že v tom člověk není sám a někdo mu věří." },
+  { Icon: IconHeart, title: "Plně hrazený kurz", text: "Od první hodiny teorie až po poslední 28. hodinu jízdy." },
+  { Icon: IconBriefcase, title: "Šance na lepší práci", text: "Řada pracovních pozic dnes řidičák vyžaduje." },
+  { Icon: IconHome, title: "Svoboda a samostatnost", text: "Snazší cesta za rodinou, k lékaři nebo do školy." },
+  { Icon: IconFriends, title: "Podpora komunity", text: "Pocit, že v tom člověk není sám a někdo mu věří." },
 ];
 
 const timeline = [
@@ -165,7 +166,7 @@ export default function AboutPage() {
           <RevealGroup className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {charityBenefits.map(({ Icon, title, text }) => (
               <RevealItem key={title} className="rounded-[var(--radius-card)] border border-white/10 bg-white/[0.03] p-6">
-                <Icon size={30} weight="duotone" className="text-accent" aria-hidden="true" />
+                <Icon size={30} className="text-accent" aria-hidden="true" />
                 <h3 className="mt-6 font-display text-2xl font-bold">{title}</h3>
                 <p className="mt-2 text-[#bdbcb7]">{text}</p>
               </RevealItem>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { IconCheckTile } from "@/components/icons/Icons";
 import type { ReactNode } from "react";
-import { Wings } from "@/components/brand/Wings";
+import { IconTile, ServiceIcon } from "@/components/icons/ServiceIcon";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Service } from "@/lib/content";
@@ -22,7 +22,7 @@ function Highlights({ items, className }: { items: string[]; className?: string 
     <ul className={cn("grid gap-2.5 sm:grid-cols-2", className)}>
       {items.map((h) => (
         <li key={h} className="flex gap-2.5 leading-snug">
-          <CheckCircle size={20} weight="fill" className="shrink-0 text-accent" aria-hidden="true" />
+          <IconCheckTile size={20} className="shrink-0 text-accent" aria-hidden="true" />
           {h}
         </li>
       ))}
@@ -89,7 +89,9 @@ export function ServiceDetail({ service, children }: { service: Service; childre
 
         <div>
           <Reveal>
-            <Wings className="h-7 w-20 text-accent" />
+            <IconTile tone="dark">
+              <ServiceIcon slug={service.slug} size={30} />
+            </IconTile>
             <Highlights items={service.highlights} className="mt-6 border-y border-line py-6" />
           </Reveal>
           <Reveal className="mt-10">

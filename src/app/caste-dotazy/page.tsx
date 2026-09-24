@@ -1,4 +1,4 @@
-import { ChatCircleText, Phone } from "@phosphor-icons/react/dist/ssr";
+import { IconChat, IconPhone } from "@/components/icons/Icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { FaqExplorer } from "@/components/sections/FaqExplorer";
 import { ButtonLink, buttonClass } from "@/components/ui/Button";
@@ -28,14 +28,14 @@ export default function FaqPage() {
 
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-[var(--radius-card)] bg-surface-2 p-7 md:p-8">
-            <ChatCircleText size={32} weight="duotone" className="text-accent-text" aria-hidden="true" />
+            <IconChat size={32} className="text-accent-text" aria-hidden="true" />
             <h2 className="mt-5 font-display text-2xl font-semibold">Máte jiný dotaz?</h2>
             <p className="mt-2 text-muted">
               Volejte {site.hours.label.toLowerCase()}, nebo nám napište. Rádi poradíme.
             </p>
             <div className="mt-6 grid gap-3">
               <a href={site.phoneHref} className={buttonClass("primary", "lg")}>
-                <Phone size={18} weight="bold" aria-hidden="true" />
+                <IconPhone size={18} aria-hidden="true" />
                 {site.phoneDisplay}
               </a>
               <ButtonLink href="/kontakt" variant="outline" size="lg">

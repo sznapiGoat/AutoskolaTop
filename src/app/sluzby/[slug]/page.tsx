@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { IconArrowRight } from "@/components/icons/Icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlanCards } from "@/components/sections/PlanCards";
 import { ServiceDetail } from "@/components/sections/ServiceDetail";
@@ -87,7 +87,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
             <Link href="/cenik" className="group mt-8 inline-flex items-center gap-2 font-semibold text-accent-text">
               Kompletní ceník, platby a poplatky
-              <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
         </section>
@@ -102,7 +102,7 @@ export default async function ServicePage({ params }: Props) {
               </h2>
               <Link href="/caste-dotazy" className="group mt-6 inline-flex items-center gap-2 font-semibold text-accent-text">
                 Všechny dotazy
-                <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
             <Accordion items={faqs} />
@@ -132,7 +132,7 @@ export default async function ServicePage({ params }: Props) {
                     {formatPrice(s.price)}
                   </p>
                 </div>
-                <ArrowRight size={18} weight="bold" className="mr-2 ml-auto transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                <IconArrowRight size={18} className="mr-2 ml-auto transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </li>
           ))}

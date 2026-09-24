@@ -25,6 +25,9 @@
   --logo-ink: var(--ink);
   --logo-top: #a7a7a7;
   --logo-sig: #e8791e;
+  /* icon set (components/icons): accent part + knock-out colour */
+  --icon-accent: var(--accent);
+  --icon-knock: var(--bg);
 }
 
 @media (prefers-color-scheme: dark) {

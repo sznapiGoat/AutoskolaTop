@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { IconArrowRight } from "@/components/icons/Icons";
 import { PromoGate } from "@/components/ui/PromoGate";
 import { formatPrice, promo } from "@/lib/site";
 
@@ -15,7 +15,7 @@ export function PromoBar() {
             {promo.label} <strong className="font-semibold text-accent">{formatPrice(promo.price)}</strong>{" "}
             {promo.untilLabel}
           </span>
-          <ArrowRight size={14} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          <IconArrowRight size={14} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>
     </PromoGate>
