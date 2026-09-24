@@ -1,111 +1,100 @@
-import type { Metadata } from "next";
-import ServiceDetail from "@/components/sections/ServiceDetail";
-import CTABanner from "@/components/sections/CTABanner";
-import PageHeader from "@/components/sections/PageHeader";
-import { images } from "@/lib/site";
+import type { CSSProperties } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { PageHero } from "@/components/sections/PageHero";
+import { CtaBand } from "@/components/sections/CtaBand";
+import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { services } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
+import { formatPrice } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Služby | Autoškola TOP Rakovník",
+export const metadata = pageMeta({
+  title: "Služby autoškoly",
   description:
     "Řidičský průkaz sk. B, jízdy do Prahy, kurz parkování, kondiční jízdy, školení řidičů referentů a vrácení řidičského průkazu v Rakovníku.",
-};
+  path: "/sluzby",
+});
 
-export default function SluzbyPage() {
+export default function ServicesPage() {
+  const [main, ...rest] = services;
   return (
     <>
-      <PageHeader
-        title="Naše služby"
-        subtitle="Od prvního řidičáku po návrat za volant. Vyberte si, co potřebujete."
+      <PageHero
+        title="Od prvního řidičáku po návrat za volant"
+        lead="Vyberte si, s čím vám můžeme pomoct. U každé služby najdete cenu, průběh i odpovědi na časté otázky."
+        crumbs={[{ name: "Služby", path: "/sluzby" }]}
       />
 
-      <ServiceDetail
-        title="Řidičský průkaz sk. B"
-        description={[
-          "Kompletní výcvik pro získání řidičského oprávnění skupiny B. Provedeme vás teorií i praktickými jízdami v moderním klimatizovaném voze, vlastním tempem a bez stresu.",
-          "Součástí kurzu je zkouška na nečisto i jízda do Prahy, abyste byli připraveni na skutečný provoz, ne jen na zkušební okruh.",
-        ]}
-        image={images.prukazB}
-        alt="Vzor českého řidičského průkazu, přední a zadní strana"
-        imageRight
-        imageContain
-        listTitle="Podmínky pro přijetí"
-        listItems={[
-          "Věk 18 let (výcvik lze zahájit již v 17,5 letech)",
-          "Posudek o zdravotní způsobilosti od lékaře",
-          "Vyplněná žádost o přijetí k výuce a výcviku",
-          "Trvalý nebo přechodný pobyt na území ČR",
-        ]}
-        ctaHref="/cenik"
-        ctaLabel="Zobrazit ceník"
-      />
+      <section className="container-page pb-8">
+        <div className="animate-fade-up" style={{ "--delay": "0.3s" } as CSSProperties}>
+            <Link
+              href={`/sluzby/${main.slug}`}
+              className="group grid overflow-hidden rounded-[var(--radius-card)] bg-panel text-panel-ink md:grid-cols-2"
+            >
+              <div className="relative min-h-72 md:min-h-[26rem]">
+                <Image
+                  src={main.image}
+                  alt={main.imageAlt}
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-col justify-between gap-10 p-8 md:p-12">
+                <div>
+                  <p className="font-semibold text-accent">Nejčastější volba</p>
+                  <h2 className="mt-3 font-display text-4xl leading-[1.05] font-bold md:text-5xl">{main.name}</h2>
+                  <p className="mt-4 max-w-md text-lg text-panel-ink/75">{main.lead}</p>
+                </div>
+                <div className="flex items-end justify-between gap-6">
+                  <p className="text-panel-ink/70">
+                    od <span className="font-display text-3xl font-bold text-panel-ink">{formatPrice(main.price)}</span>
+                  </p>
+                  <span className="grid size-14 place-items-center rounded-full bg-accent text-on-accent transition-transform group-hover:rotate-45">
+                    <ArrowUpRight size={24} weight="bold" aria-hidden="true" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+        </div>
 
-      <ServiceDetail
-        title="Jízdy do Prahy"
-        description={[
-          "Připravíme vás nejen na zkoušky, ale i na provoz v hlavním městě. Hustý provoz, víceproudé komunikace, tramvaje i kruhové objezdy zvládnete s klidem.",
-          "Jízda do Prahy je součástí všech našich kurzů sk. B. Jistota z velkého města se vám bude hodit celý život.",
-        ]}
-        image={images.praha}
-        alt="Jízda pražskou ulicí s Národním muzeem v pozadí"
-        muted
-      />
+        <RevealGroup className="mt-4 grid gap-4 lg:grid-cols-6">
+          {rest.map((s, i) => (
+            <RevealItem key={s.slug} className={cn(i < 2 ? "lg:col-span-3" : "lg:col-span-2")}>
+              <Link
+                href={`/sluzby/${s.slug}`}
+                className="group flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface transition-shadow hover:shadow-soft"
+              >
+                <div className={cn("relative overflow-hidden bg-surface-2", i < 2 ? "aspect-[16/9]" : "aspect-[4/3]")}>
+                  <Image
+                    src={s.image}
+                    alt={s.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <h2 className="font-display text-2xl font-semibold">{s.name}</h2>
+                  <p className="mt-2 flex-1 leading-relaxed text-muted">{s.pitch}</p>
+                  <div className="mt-6 flex items-center justify-between">
+                    <p className="font-semibold">{formatPrice(s.price)}</p>
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-text">
+                      Detail
+                      <ArrowUpRight size={14} weight="bold" aria-hidden="true" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </section>
 
-      <ServiceDetail
-        title="Kurz parkování"
-        description={[
-          "5 lekcí po 45 minutách. Zbavíme vás fobie z parkování.",
-          "Podélné, kolmé i šikmé parkování natrénujete v reálných situacích, dokud si nebudete jistí. Kurz je vhodný pro každého, kdo už řidičák má, ale parkování ho stresuje.",
-        ]}
-        image={images.parkovani}
-        alt="Nácvik podélného parkování s instruktorem"
-        imageRight
-        priceBadge="3.600 Kč"
-      />
-
-      <ServiceDetail
-        title="Kondiční jízdy"
-        description={[
-          "Dlouho jste neřídili? Pomůžeme vám získat zpět jistotu za volantem.",
-          "Jezdíme tam, kde to potřebujete: po městě, po okrese i do Prahy. Tempo a náplň lekcí přizpůsobíme přesně vám.",
-        ]}
-        image={images.kondicni}
-        alt="Kondiční jízda s instruktorem autoškoly"
-        priceBadge="750 Kč / lekce"
-        muted
-      />
-
-      <ServiceDetail
-        title="Školení řidičů referentů"
-        description={[
-          "Zaměstnavatel je ze zákona povinen zajistit školení řidičů referentů pro všechny zaměstnance, kteří při výkonu práce řídí služební nebo soukromé vozidlo.",
-          "Školení provádíme pro firmy i jednotlivce, prezenčně v naší učebně nebo po domluvě přímo u vás ve firmě. Po absolvování obdržíte potvrzení o školení.",
-        ]}
-        image={images.skoleni}
-        alt="Učebna Autoškoly TOP s velkou obrazovkou a školicím stolem"
-        imageRight
-        priceBadge="500 Kč"
-      />
-
-      <ServiceDetail
-        title="Vrácení řidičského průkazu"
-        description={[
-          "Přišli jste o řidičák kvůli vybodování, zákazu řízení nebo ze zdravotních důvodů? Připravíme vás na přezkoušení z odborné způsobilosti a pomůžeme vám vrátit se za volant.",
-          "Přezkoušení zahrnuje 2 lekce po 45 minutách jízd a test z pravidel provozu.",
-        ]}
-        image={images.vraceni}
-        alt="Přezkoušení z odborné způsobilosti pro vrácení řidičského průkazu"
-        priceBadge="5.900 Kč"
-        listTitle="Doklady k přezkoušení"
-        listItems={[
-          "Platný občanský průkaz",
-          "Posudek o zdravotní způsobilosti od lékaře",
-          "Rozhodnutí o odnětí řidičského oprávnění, případně výpis z bodového hodnocení",
-          "Žádost o vrácení řidičského oprávnění",
-        ]}
-        muted
-      />
-
-      <CTABanner />
+      <CtaBand />
     </>
   );
 }

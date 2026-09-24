@@ -1,142 +1,96 @@
-import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
-import PageHeader from "@/components/sections/PageHeader";
-import ContactForm from "@/components/sections/ContactForm";
-import SafeImage from "@/components/ui/SafeImage";
-import { site, images } from "@/lib/site";
+import { Suspense } from "react";
+import { ArrowSquareOut, Clock, EnvelopeSimple, MapPin, Phone, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { PageHero } from "@/components/sections/PageHero";
+import { ContactForm } from "@/components/sections/ContactForm";
+import { MapEmbed } from "@/components/sections/MapEmbed";
+import { pageMeta } from "@/lib/seo";
+import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Kontakt | Autoškola TOP Rakovník",
+export const metadata = pageMeta({
+  title: "Kontakt a přihláška",
   description:
-    "Kontaktujte Autoškolu TOP v Rakovníku. Ottova 418, 269 01 Rakovník. Telefon 777 660 186, e-mail info@autoskolatop.cz. Otevřeno Po–Pá 8:00–18:00.",
-};
+    "Přihlaste se do Autoškoly TOP v Rakovníku. Ottova 418, budova Raportu, 2. patro. Telefon 777 660 186, e-mail info@autoskolatop.cz, Po-Pá 8:00-18:00.",
+  path: "/kontakt",
+});
 
-export default function KontaktPage() {
+const contacts = [
+  { Icon: Phone, label: "Telefon", value: site.phone, href: site.phoneHref },
+  { Icon: WhatsappLogo, label: "WhatsApp", value: "Napište nám zprávu", href: site.whatsappHref, external: true },
+  { Icon: EnvelopeSimple, label: "E-mail", value: site.email, href: `mailto:${site.email}` },
+  { Icon: Clock, label: "Provozní doba", value: site.hours.label, note: site.hours.note },
+];
+
+export default function ContactPage() {
   return (
     <>
-      <PageHeader
-        title="Kontakt"
-        subtitle="Zavolejte, napište nebo se zastavte. Jsme tu pro vás."
+      <PageHero
+        title="Pojďme na to"
+        lead="Zavolejte, napište nebo vyplňte přihlášku. Domluvíme kurz, termín nástupu i první jízdu."
+        crumbs={[{ name: "Kontakt", path: "/kontakt" }]}
       />
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
-            <ContactForm />
+      <section className="container-page grid gap-10 pb-24 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
+        <Suspense fallback={<div className="min-h-[40rem] animate-pulse rounded-[var(--radius-card)] bg-surface-2" />}>
+          <ContactForm />
+        </Suspense>
 
-            <div>
-              <h2 className="text-2xl font-extrabold tracking-tight text-body sm:text-3xl">
-                Autoškola TOP
-              </h2>
-
-              <ul className="mt-8 space-y-5">
-                <li className="flex items-start gap-3.5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <MapPin className="h-5 w-5 text-accent" aria-hidden="true" />
+        <div className="grid content-start gap-6">
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            {contacts.map(({ Icon, label, value, href, note, external }) => {
+              const inner = (
+                <>
+                  <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-text">
+                    <Icon size={22} weight="duotone" aria-hidden="true" />
                   </span>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-muted">
-                      Adresa
-                    </p>
-                    <p className="mt-0.5 text-base font-medium text-body">
-                      {site.address}
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <Phone className="h-5 w-5 text-accent" aria-hidden="true" />
+                  <span>
+                    <span className="block text-sm text-muted">{label}</span>
+                    <span className="block font-semibold">{value}</span>
+                    {note && <span className="block text-sm text-muted">{note}</span>}
                   </span>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-muted">
-                      Telefon
-                    </p>
+                </>
+              );
+              return (
+                <li key={label}>
+                  {href ? (
                     <a
-                      href={site.phoneHref}
-                      className="mt-0.5 block text-base font-medium text-body transition-colors duration-200 hover:text-accent"
+                      href={href}
+                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-ink"
                     >
-                      {site.phone}
+                      {inner}
                     </a>
-                  </div>
+                  ) : (
+                    <div className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-4">{inner}</div>
+                  )}
                 </li>
-                <li className="flex items-start gap-3.5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <Mail className="h-5 w-5 text-accent" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-muted">
-                      E-mail
-                    </p>
-                    <a
-                      href={`mailto:${site.email}`}
-                      className="mt-0.5 block text-base font-medium text-body transition-colors duration-200 hover:text-accent"
-                    >
-                      {site.email}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <Clock className="h-5 w-5 text-accent" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-muted">
-                      Provozní doba
-                    </p>
-                    <p className="mt-0.5 text-base font-medium text-body">
-                      {site.hours}
-                    </p>
-                    <p className="text-sm text-muted">{site.hoursNote}</p>
-                  </div>
-                </li>
-              </ul>
+              );
+            })}
+          </ul>
 
-              <div className="mt-7 flex gap-3">
-                <span
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-muted transition-colors duration-200 hover:bg-accent hover:text-white"
-                  aria-label="Facebook"
+          <div className="rounded-[var(--radius-card)] bg-panel p-6 text-panel-ink md:p-7">
+            <div className="flex items-start gap-3">
+              <MapPin size={24} weight="fill" className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <div>
+                <h2 className="font-display text-xl font-semibold">Kde máme učebnu</h2>
+                <address className="mt-1 not-italic text-panel-ink/75">
+                  {site.address.street}, {site.address.zip} {site.address.city}
+                  <br />
+                  {site.address.note}
+                </address>
+                <a
+                  href={site.mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-[#ff8a47]"
                 >
-                  <FacebookIcon className="h-5 w-5" />
-                </span>
-                <span
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-muted transition-colors duration-200 hover:bg-accent hover:text-white"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon className="h-5 w-5" />
-                </span>
-                <span
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-muted transition-colors duration-200 hover:bg-accent hover:text-white"
-                  aria-label="WhatsApp"
-                >
-                  <WhatsAppIcon className="h-5 w-5" />
-                </span>
-              </div>
-
-              <div className="relative mt-9 aspect-[4/3] overflow-hidden rounded-2xl">
-                <SafeImage
-                  src={images.ucebna}
-                  alt="Učebna Autoškoly TOP s logem na stěně a připravenými učebnicemi"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="mt-6 overflow-hidden rounded-2xl border border-line">
-                <iframe
-                  src="https://www.google.com/maps?q=Ottova+418,+269+01+Rakovn%C3%ADk&output=embed"
-                  title="Mapa: Autoškola TOP, Ottova 418, Rakovník"
-                  width="600"
-                  height="320"
-                  className="h-80 w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
+                  Navigovat
+                  <ArrowSquareOut size={14} weight="bold" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>
+
+          <MapEmbed />
         </div>
       </section>
     </>

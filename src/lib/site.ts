@@ -1,31 +1,58 @@
 export const site = {
   name: "Autoškola TOP",
+  legalName: "Autoškola Top Rakovník",
+  url: "https://www.autoskolatop.cz",
+  tagline: "Vyjeďte s námi tím správným směrem.",
+  description:
+    "Autoškola TOP v Rakovníku. Řidičský průkaz sk. B v klidu a bez křiku, jízdy do Prahy v ceně kurzu, kurz parkování, kondiční jízdy a školení řidičů.",
   phone: "+420 777 660 186",
   phoneHref: "tel:+420777660186",
   phoneDisplay: "777 660 186",
+  whatsappHref: "https://wa.me/420777660186",
   email: "info@autoskolatop.cz",
-  address: "Ottova 418, 269 01 Rakovník",
-  hours: "Po–Pá: 8:00–18:00",
-  hoursNote: "(dle předchozí telefonické domluvy)",
+  ico: "74749579",
+  address: {
+    street: "Ottova 418",
+    city: "Rakovník",
+    zip: "269 01",
+    region: "Středočeský kraj",
+    note: "Budova Raportu naproti Rakoně, 2. patro",
+  },
+  hours: {
+    label: "Po-Pá 8:00-18:00",
+    note: "po předchozí telefonické domluvě",
+    schema: "Mo-Fr 08:00-18:00",
+  },
+  mapsHref: "https://www.google.com/maps/search/?api=1&query=Ottova+418+Rakovn%C3%ADk",
+  mapsEmbed: "https://www.google.com/maps?q=Ottova+418,+269+01+Rakovn%C3%ADk&output=embed",
+  social: {
+    instagram: "https://www.instagram.com/autoskolatop_rakovnik/",
+    facebook: "https://www.facebook.com/AutoskolaTopRakovnik/",
+  },
+  facebookRating: { percent: 100, reviews: 13 },
+} as const;
+
+/** Time-limited promo. Hidden automatically once `until` has passed. */
+export const promo = {
+  price: 15900,
+  label: "Akční cena kurzu sk. B",
+  until: "2026-09-30T23:59:59+02:00",
+  untilLabel: "do konce září",
 };
 
-export const images = {
-  hero: "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000050-a2518a251a/auto%20banner-2.jpeg?ph=390ce95b86",
-  procMy: "/images/jizda-instruktor.jpg",
-  sNami:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000056-3e1583e15b/A%20s%20nami.jpeg?ph=390ce95b86",
-  bonus:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000058-69e1569e16/A%20setri%20uvod.jpeg?ph=390ce95b86",
-  cenik:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000084-caeb0caeb2/cen.jpeg?ph=390ce95b86",
-  prukazB: "/images/ridicsky-prukaz.jpg",
-  praha: "/images/jizda-praha.jpg",
-  parkovani:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000082-c1693c1694/A%20park.jpeg?ph=390ce95b86",
-  kondicni:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000064-6eef56eef8/A%20kon.jpeg?ph=390ce95b86",
-  skoleni: "/images/ucebna-panorama.jpg",
-  ucebna: "/images/ucebna-stul.jpg",
-  vraceni:
-    "https://390ce95b86.clvaw-cdnwnd.com/ab26d331d8bfae8755466480332847c2/200000068-bf02fbf030/A%20vrac.jpeg?ph=390ce95b86",
-};
+export function isPromoActive(now = new Date()) {
+  return now <= new Date(promo.until);
+}
+
+export const nav = [
+  { href: "/sluzby", label: "Služby" },
+  { href: "/cenik", label: "Ceník" },
+  { href: "/jak-to-probiha", label: "Jak to probíhá" },
+  { href: "/caste-dotazy", label: "Časté dotazy" },
+  { href: "/o-nas", label: "O nás" },
+  { href: "/pomahame", label: "Pomáháme" },
+] as const;
+
+export function formatPrice(value: number) {
+  return `${value.toLocaleString("cs-CZ").replace(/\s/g, " ")} Kč`;
+}
