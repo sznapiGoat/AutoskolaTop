@@ -45,12 +45,10 @@ export function isPromoActive(now = new Date()) {
 }
 
 export const nav = [
-  { href: "/sluzby", label: "Služby" },
-  { href: "/cenik", label: "Ceník" },
-  { href: "/jak-to-probiha", label: "Jak to probíhá" },
+  { href: "/sluzby", label: "Služby a ceník" },
   { href: "/caste-dotazy", label: "Časté dotazy" },
   { href: "/o-nas", label: "O nás" },
-  { href: "/pomahame", label: "Pomáháme" },
+  { href: "/kontakt", label: "Kontakt" },
 ] as const;
 
 export function formatPrice(value: number) {

@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * The path to a licence as a road: the lane marking fills in and the car
  * drives down as you scroll, so progress through the steps is literal.
  */
-export function RoadProcess({ showLink = true }: { showLink?: boolean }) {
+export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
   const ref = useRef<HTMLOListElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 70%", "end 60%"] });
@@ -74,7 +74,7 @@ export function RoadProcess({ showLink = true }: { showLink?: boolean }) {
         {showLink && (
           <div className="mt-16 md:text-center">
             <Link
-              href="/jak-to-probiha"
+              href="/sluzby#prubeh"
               className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-[#ff8a47]"
             >
               Jak přesně kurz probíhá

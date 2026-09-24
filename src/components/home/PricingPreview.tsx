@@ -15,7 +15,7 @@ export function PricingPreview() {
         <PlanCards compact />
       </div>
       <Link
-        href="/cenik"
+        href="/sluzby#cenik"
         className="group mt-8 inline-flex items-center gap-2 font-semibold text-accent-text"
       >
         Kompletní ceník a poplatky

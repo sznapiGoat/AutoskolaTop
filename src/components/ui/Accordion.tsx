@@ -17,7 +17,7 @@ export function Accordion({ items, className }: { items: AccordionItem[]; classN
         const isOpen = open === item.id;
         const panelId = `${baseId}-${item.id}`;
         return (
-          <div key={item.id} id={item.id} className="scroll-mt-28">
+          <div key={item.id} id={item.id}>
             <h3 className="font-sans text-base tracking-normal">
               <button
                 type="button"

@@ -1,22 +1,23 @@
 import Link from "next/link";
 import { FacebookLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
-import { Logo } from "@/components/brand/Logo";
+import { BrandLogo } from "@/components/brand/Logo";
+import { Wings } from "@/components/brand/Wings";
 import { services } from "@/lib/content";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="asphalt relative overflow-hidden text-[#d9d8d3]">
-      {/* dashed centre line, the "road" the footer sits on */}
-      <div
-        aria-hidden="true"
-        className="h-1.5 w-full bg-[repeating-linear-gradient(90deg,#f26b1d_0_48px,transparent_48px_88px)] opacity-90"
-      />
-      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+    <footer className="on-dark asphalt relative overflow-hidden text-[#d9d8d3]">
+      <div aria-hidden="true" className="container-page flex items-center gap-4 pt-14 text-[#3a3a37]">
+        <Wings className="h-6 w-28 shrink-0" />
+        <div className="h-px flex-1 bg-white/10" />
+        <Wings side="right" className="h-6 w-28 shrink-0" />
+      </div>
+      <div className="container-page grid gap-12 pt-10 pb-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div className="max-w-sm">
-          <Link href="/" aria-label="Autoškola TOP, úvodní stránka" className="inline-block rounded-lg [&_.text-ink]:text-white [&_.text-muted]:text-[#a6a59f]">
-            <Logo />
+          <Link href="/" aria-label="Autoškola TOP Rakovník, úvodní stránka" className="inline-block rounded-lg">
+            <BrandLogo variant="textured" className="w-52" />
           </Link>
           <p className="mt-5 leading-relaxed text-[#a6a59f]">{site.tagline} Autoškola pro Rakovník a okolí.</p>
           <div className="mt-6 flex gap-2">
@@ -31,7 +32,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="grid size-11 place-items-center rounded-full border border-white/10 text-white transition-colors hover:border-accent hover:bg-accent hover:text-[#151514]"
+                className="grid size-11 place-items-center rounded-lg border border-white/10 text-white transition-colors hover:border-accent hover:bg-accent hover:text-[#151514]"
               >
                 <Icon size={20} weight="fill" />
               </a>
@@ -40,11 +41,11 @@ export function Footer() {
         </div>
 
         <nav aria-label="Služby">
-          <h2 className="text-sm font-semibold text-white">Služby</h2>
+          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Služby</h2>
           <ul className="mt-4 space-y-2.5">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/sluzby/${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
+                <Link href={`/sluzby#${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
                   {s.short}
                 </Link>
               </li>
@@ -53,9 +54,9 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Stránky">
-          <h2 className="text-sm font-semibold text-white">Autoškola</h2>
+          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Autoškola</h2>
           <ul className="mt-4 space-y-2.5">
-            {[...nav, { href: "/kontakt", label: "Kontakt" }].map((item) => (
+            {[{ href: "/", label: "Úvod" }, ...nav, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-[#a6a59f] transition-colors hover:text-white">
                   {item.label}
@@ -66,7 +67,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <h2 className="text-sm font-semibold text-white">Kontakt</h2>
+          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Kontakt</h2>
           <address className="mt-4 space-y-2.5 not-italic text-[#a6a59f]">
             <p>
               {site.address.street}, {site.address.zip} {site.address.city}

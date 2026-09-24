@@ -24,7 +24,7 @@ export function CharityTeaser() {
             práce, ke vzdělání i k rodině.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-6">
-            <ButtonLink href="/pomahame" variant="dark" size="lg">
+            <ButtonLink href="/o-nas#pomahame" size="lg">
               Jak to funguje
             </ButtonLink>
             <div className="flex items-center gap-3 text-sm text-muted">

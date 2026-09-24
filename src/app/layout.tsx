@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Geist } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,15 +9,17 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { localBusinessLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-const heading = Bricolage_Grotesque({
+// Condensed heavy caps, the same voice as "AUTOŠKOLA" in the logo.
+const heading = Barlow_Condensed({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const body = Geist({
+const body = Barlow({
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -52,8 +54,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f6f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e0e0d" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f3f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
   ],
 };
 

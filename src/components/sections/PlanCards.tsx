@@ -47,7 +47,7 @@ export function PlanCards({ compact = false }: { compact?: boolean }) {
           )}
           <Link
             href={`/kontakt?kurz=${plan.id}`}
-            className={buttonClass(plan.featured ? "primary" : "outline", "md", "mt-7 w-full")}
+            className={buttonClass(plan.featured ? "light" : "outline", "md", "mt-7 w-full")}
           >
             Vybrat {plan.name}
           </Link>
