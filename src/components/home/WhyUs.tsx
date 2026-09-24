@@ -5,6 +5,10 @@ import { reasons } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const icons = [SmileyWink, Buildings, Car, UsersThree];
+const photos: Record<number, string> = {
+  1: "/images/jizda-praha.webp",
+  2: "/images/autoskola-top-instruktor-vuz.webp",
+};
 
 export function WhyUs() {
   return (
@@ -35,7 +39,9 @@ export function WhyUs() {
 
         {reasons.map((r, i) => {
           const Icon = icons[i];
-          const variant = i === 1 ? "photo" : i === 3 ? "accent" : "plain";
+          // two of the reasons get real photos: Prague streets and the school car
+          const photo = photos[i];
+          const variant = photo ? "photo" : i === 3 ? "accent" : "plain";
           return (
             <RevealItem
               key={r.title}
@@ -49,7 +55,7 @@ export function WhyUs() {
               {variant === "photo" && (
                 <>
                   <Image
-                    src="/images/jizda-praha.webp"
+                    src={photo}
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
