@@ -68,12 +68,12 @@ export default function ContactPage() {
             })}
           </ul>
 
-          <div className="rounded-[var(--radius-card)] bg-panel p-6 text-panel-ink md:p-7">
+          <div className="rounded-[var(--radius-card)] bg-white border border-line p-6 text-ink md:p-7">
             <div className="flex items-start gap-3">
               <IconPin size={24} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
               <div>
                 <h2 className="font-display text-xl font-semibold">Kde máme učebnu</h2>
-                <address className="mt-1 not-italic text-panel-ink/75">
+                <address className="mt-1 not-italic text-muted">
                   {site.address.street}, {site.address.zip} {site.address.city}
                   <br />
                   {site.address.note}
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   href={site.mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-[#ff8a47]"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
                 >
                   Navigovat
                   <IconExternal size={14} aria-hidden="true" />

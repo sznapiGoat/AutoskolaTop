@@ -18,10 +18,10 @@ export function CtaBand({
         <div className="grid items-stretch md:grid-cols-[1.1fr_1fr]">
           <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:p-16">
             <Wings className="h-8 w-24 text-accent" />
-            <h2 className="mt-6 font-display text-5xl font-extrabold md:text-6xl">{title}</h2>
+            <h2 className="mt-6 font-display text-4xl font-bold md:text-5xl">{title}</h2>
             <p className="mt-4 max-w-md text-lg text-[#bdbcb7]">{text}</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/kontakt" variant="light" size="lg">
+              <ButtonLink href="/kontakt" size="lg">
                 Chci řidičák
               </ButtonLink>
               <a

@@ -40,13 +40,13 @@ export default function PricingPage() {
       <section className="container-page pb-16" aria-labelledby="kurzy-b">
         <PromoGate>
           <Reveal className="mb-8 flex flex-col gap-2 rounded-[var(--radius-card)] bg-accent p-6 text-on-accent sm:flex-row sm:items-center sm:justify-between md:px-8">
-            <p className="font-display text-2xl font-bold uppercase">
+            <p className="font-display text-2xl font-bold">
               {promo.label} jen za {formatPrice(promo.price)}
             </p>
             <p className="text-on-accent/80">Platí {promo.untilLabel}. Zavolejte a domluvte si nástup.</p>
           </Reveal>
         </PromoGate>
-        <h2 id="kurzy-b" className="mb-8 font-display text-4xl font-extrabold md:text-5xl">
+        <h2 id="kurzy-b" className="mb-8 font-display text-4xl font-bold md:text-5xl">
           Řidičský průkaz sk. B
         </h2>
         <PlanCards />
@@ -55,7 +55,7 @@ export default function PricingPage() {
       <section className="bg-surface-2/60 py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="font-display text-4xl font-extrabold md:text-5xl">Jak se platí</h2>
+            <h2 className="font-display text-4xl font-bold md:text-5xl">Jak se platí</h2>
             <RevealGroup className="mt-8 grid gap-3">
               {payment.map(({ Icon, title, text }) => (
                 <RevealItem key={title} className="flex gap-4 rounded-[var(--radius-card)] bg-surface p-5">
@@ -69,7 +69,7 @@ export default function PricingPage() {
             </RevealGroup>
           </div>
           <div>
-            <h2 className="font-display text-4xl font-extrabold md:text-5xl">Příplatky a poplatky</h2>
+            <h2 className="font-display text-4xl font-bold md:text-5xl">Příplatky a poplatky</h2>
             <ul className="mt-8 grid gap-3">
               {fees.map((f) => (
                 <li key={f.label} className="flex items-center justify-between gap-6 rounded-[var(--radius-card)] bg-surface p-5">
@@ -90,7 +90,7 @@ export default function PricingPage() {
       </section>
 
       <section className="container-page py-16 md:py-24" aria-labelledby="dalsi">
-        <h2 id="dalsi" className="font-display text-4xl font-extrabold md:text-5xl">
+        <h2 id="dalsi" className="font-display text-4xl font-bold md:text-5xl">
           Další kurzy a služby
         </h2>
         <ul className="mt-8 grid gap-3 md:grid-cols-2">
@@ -105,7 +105,7 @@ export default function PricingPage() {
                     <ServiceIcon slug={s.slug} size={24} />
                   </IconTile>
                   <span>
-                    <span className="block font-display text-xl font-bold uppercase">{s.name}</span>
+                    <span className="block font-display text-xl font-bold">{s.name}</span>
                     <span className="text-sm text-muted">{s.priceNote}</span>
                   </span>
                 </span>
@@ -120,7 +120,7 @@ export default function PricingPage() {
       </section>
 
       <section className="container-page grid gap-10 pb-16 lg:grid-cols-[1fr_1.6fr] lg:gap-16" aria-labelledby="faq-platba">
-        <h2 id="faq-platba" className="font-display text-4xl font-extrabold md:text-5xl">
+        <h2 id="faq-platba" className="font-display text-4xl font-bold md:text-5xl">
           Dotazy k platbě
         </h2>
         <Accordion items={paymentFaqs} />

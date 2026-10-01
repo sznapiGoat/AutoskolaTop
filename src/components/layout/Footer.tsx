@@ -42,7 +42,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Služby">
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Služby</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Služby</h2>
           <ul className="mt-4 space-y-2.5">
             {services.map((s) => (
               <li key={s.slug}>
@@ -55,7 +55,7 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Stránky">
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Autoškola</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Autoškola</h2>
           <ul className="mt-4 space-y-2.5">
             {[{ href: "/", label: "Úvod" }, ...nav, { href: "/sluzby#prubeh", label: "Průběh kurzu" }, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
               <li key={item.href}>
@@ -68,7 +68,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Kontakt</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Kontakt</h2>
           <address className="mt-4 space-y-2.5 not-italic text-[#a6a59f]">
             <p>
               {site.address.street}, {site.address.zip} {site.address.city}

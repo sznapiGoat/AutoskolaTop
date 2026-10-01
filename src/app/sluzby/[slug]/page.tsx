@@ -76,7 +76,7 @@ export default async function ServicePage({ params }: Props) {
       {isLicence && (
         <section className="bg-surface-2/60 py-16 md:py-24" aria-labelledby="varianty">
           <div className="container-page">
-            <h2 id="varianty" className="font-display text-5xl font-extrabold md:text-6xl">
+            <h2 id="varianty" className="font-display text-4xl font-bold md:text-5xl">
               Vyberte si variantu kurzu
             </h2>
             <p className="mt-4 max-w-[60ch] text-lg text-muted">
@@ -97,7 +97,7 @@ export default async function ServicePage({ params }: Props) {
         <section className="container-page py-16 md:py-24" aria-labelledby="faq-sluzba">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
             <div>
-              <h2 id="faq-sluzba" className="font-display text-4xl font-extrabold md:text-5xl">
+              <h2 id="faq-sluzba" className="font-display text-4xl font-bold md:text-5xl">
                 Časté dotazy
               </h2>
               <Link href="/caste-dotazy" className="group mt-6 inline-flex items-center gap-2 font-semibold text-accent-text">
@@ -112,7 +112,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       <section className="container-page py-16" aria-labelledby="dalsi-sluzby">
-        <h2 id="dalsi-sluzby" className="font-display text-4xl font-extrabold md:text-5xl">
+        <h2 id="dalsi-sluzby" className="font-display text-4xl font-bold md:text-5xl">
           Další služby
         </h2>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -126,7 +126,7 @@ export default async function ServicePage({ params }: Props) {
                   <Image src={s.image} alt="" fill sizes="80px" className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-display text-xl font-bold uppercase">{s.short}</p>
+                  <p className="font-display text-xl font-bold">{s.short}</p>
                   <p className="text-sm text-muted">
                     {s.pricePrefix ? `${s.pricePrefix} ` : ""}
                     {formatPrice(s.price)}

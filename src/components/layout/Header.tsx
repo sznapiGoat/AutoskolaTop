@@ -82,7 +82,7 @@ export function Header() {
                     onMouseEnter={() => setHovered(item.href)}
                     aria-current={active === item.href ? "page" : undefined}
                     className={cn(
-                      "relative block rounded-lg px-4 py-2 font-display text-[1.05rem] font-semibold uppercase tracking-[0.04em] transition-colors",
+                      "relative block rounded-lg px-4 py-2 text-[0.95rem] font-medium transition-colors",
                       active === item.href ? "text-ink" : "text-muted hover:text-ink",
                     )}
                   >
@@ -132,7 +132,7 @@ export function Header() {
                                         <Image src={s.image} alt="" fill sizes="56px" className="object-cover" />
                                       </span>
                                       <span>
-                                        <span className="block font-display text-lg leading-tight font-bold uppercase">{s.short}</span>
+                                        <span className="block font-display text-lg leading-tight font-bold">{s.short}</span>
                                         <span className="text-sm text-muted">
                                           {s.pricePrefix ? `${s.pricePrefix} ` : ""}
                                           {formatPrice(s.price)}
@@ -216,7 +216,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "block py-4 font-display text-3xl font-bold uppercase",
+                        "block py-4 font-display text-3xl font-bold",
                         pathname === item.href ? "text-accent-text" : "text-ink",
                       )}
                     >

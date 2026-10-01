@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 function Price({ service, className }: { service: Service; className?: string }) {
   return (
     <p className={cn("font-display font-bold tabular-nums", className)}>
-      {service.pricePrefix && <span className="mr-1 text-[0.6em] font-semibold uppercase">{service.pricePrefix}</span>}
+      {service.pricePrefix && <span className="mr-1 text-[0.6em] font-semibold">{service.pricePrefix}</span>}
       {formatPrice(service.price)}
     </p>
   );
@@ -35,7 +35,7 @@ function Body({ service }: { service: Service }) {
     <div className="space-y-10">
       {service.body.map((block) => (
         <div key={block.heading}>
-          <h3 className="font-display text-2xl font-bold uppercase">{block.heading}</h3>
+          <h3 className="font-display text-2xl font-bold">{block.heading}</h3>
           {block.text.map((t) => (
             <p key={t} className="mt-3 max-w-[65ch] leading-relaxed text-muted">
               {t}
@@ -77,11 +77,11 @@ export function ServiceDetail({ service, children }: { service: Service; childre
               className="animate-settle object-cover"
             />
           </div>
-          <div className="on-dark relative -mt-10 ml-4 mr-4 rounded-[var(--radius-card)] bg-panel p-6 text-panel-ink shadow-soft sm:ml-8 sm:mr-auto sm:max-w-sm">
-            <p className="text-sm text-[#bdbcb7]">Cena</p>
+          <div className="relative -mt-10 ml-4 mr-4 rounded-[var(--radius-card)] bg-white border border-line p-6 text-ink shadow-soft sm:ml-8 sm:mr-auto sm:max-w-sm">
+            <p className="text-sm text-muted">Cena</p>
             <Price service={service} className="text-4xl" />
-            <p className="mt-1 text-sm text-[#bdbcb7]">{service.priceNote}</p>
-            <ButtonLink href={`/kontakt?sluzba=${service.slug}`} variant="light" className="mt-5 w-full">
+            <p className="mt-1 text-sm text-muted">{service.priceNote}</p>
+            <ButtonLink href={`/kontakt?sluzba=${service.slug}`} variant="primary" className="mt-5 w-full">
               {order(service)}
             </ButtonLink>
           </div>

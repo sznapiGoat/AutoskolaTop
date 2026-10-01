@@ -44,7 +44,7 @@ function Field({
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c] dark:text-[#ff9a5c]">
+        <p id={`${id}-error`} className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c]">
           <IconWarning size={16} aria-hidden="true" />
           {error}
         </p>
@@ -194,7 +194,7 @@ export function ContactForm() {
               </span>
             </label>
             {e.consent && (
-              <p id="consent-error" className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c] dark:text-[#ff9a5c]">
+              <p id="consent-error" className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c]">
                 <IconWarning size={16} aria-hidden="true" />
                 {e.consent}
               </p>

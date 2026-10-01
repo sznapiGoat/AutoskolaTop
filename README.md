@@ -27,11 +27,17 @@ npm run lint && npm run typecheck
 
 Old Webnode URLs (`/conabizime`, `/dobrocinna-akce`) and merged pages (`/jak-to-probiha`, `/pomahame`) permanently redirect to the matching section (`next.config.ts`).
 
+## Design
+
+Light only (no dark mode), following the June version the client preferred: white and warm-grey surfaces, orange `#f26419` from the logo and the school car, Space Grotesk headings in sentence case, Inter body, rounded cards and pill buttons. Only the footer and the closing call to action are dark navy. Tokens live in `src/app/globals.css`.
+
+Home: hero card (copy + the school car photo) → why us → services grid → prices → FAQ → call to action.
+
 ## Motion
 
 - Above-the-fold entrances (hero headline, page titles, hero images) are **pure CSS** (`animate-rise`, `animate-fade-up`, `animate-settle` in `globals.css`), so they never wait for hydration and don't hurt LCP.
-- Below the fold: `Reveal` / `RevealGroup` (Motion `whileInView`), the scroll-driven road timeline (`RoadProcess`), sliding nav/tab pills (`layoutId`).
-- anime.js: the logo's wing stripes unfold on scroll (`Wings`), number counters in `ProofStrip`.
+- Below the fold: `Reveal` / `RevealGroup` (Motion `whileInView`), the scroll-driven road timeline (`RoadProcess`, on `/sluzby`), sliding nav/tab pills (`layoutId`).
+- anime.js: the logo's wing stripes unfold on scroll (`Wings`).
 - Everything respects `prefers-reduced-motion`.
 
 ## Before launch
