@@ -32,7 +32,7 @@ export default function PricingPage() {
   return (
     <>
       <PageHero
-        title="Ceník bez překvapení"
+        title="Ceník"
         lead="Cena kurzu je konečná a zaplatíte ji ve dvou splátkách bez navýšení. Příplatek je jen správní poplatek za zkoušku."
         crumbs={[{ name: "Ceník", path: "/cenik" }]}
       />

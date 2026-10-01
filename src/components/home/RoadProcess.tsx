@@ -55,16 +55,13 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={cn(
-                    "pl-16 md:pl-0",
-                    right ? "md:col-start-2 md:pl-16" : "md:pr-16 md:text-right",
-                  )}
+                  className={cn("pl-16 md:pl-0", right ? "md:col-start-2 md:pl-16" : "md:pr-16 md:text-right")}
                 >
-                  <span className="font-display text-sm font-semibold text-accent">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-sm font-semibold text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <h3 className="mt-1 font-display text-2xl font-semibold md:text-3xl">{step.title}</h3>
-                  <p className={cn("mt-2 max-w-md leading-relaxed text-muted", !right && "md:ml-auto")}>
-                    {step.text}
-                  </p>
+                  <p className={cn("mt-2 max-w-md leading-relaxed text-muted", !right && "md:ml-auto")}>{step.text}</p>
                 </motion.div>
               </li>
             );

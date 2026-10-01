@@ -29,7 +29,7 @@ export const services: Service[] = [
     seoDescription:
       "Kurz řidičského průkazu skupiny B v Rakovníku. 28 hodin jízd, zkouška nanečisto a jízda do Prahy v ceně. Platba ve 2 splátkách bez navýšení.",
     lead:
-      "Naučíme vás řídit tak, abyste zvládli nejen zkoušku, ale hlavně běžný provoz. V klidném tempu, bez křiku a v pohodlném voze s klimatizací.",
+      "Jezdíme v běžném provozu Rakovníka i Prahy, klidným tempem, bez křiku a ve voze s klimatizací.",
     price: 18500,
     pricePrefix: "od",
     priceNote: "4 varianty kurzu, platba ve 2 splátkách",
@@ -477,7 +477,7 @@ export const reasons = [
     text: "Jezdíte v pohodlném oranžovém Renaultu Captur, který v Rakovníku každý zná.",
   },
   {
-    title: "Řidičák zadarmo?",
-    text: "Za každého kamaráda, který si u nás koupí kurz, dostanete 500 Kč.",
+    title: "500 Kč za kamaráda",
+    text: "Doporučíte nás a kamarád si u nás koupí kurz? Vrátíme vám 500 Kč.",
   },
 ];

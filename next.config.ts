@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // 85 for the full-screen hero photos, the default 75 everywhere else
+    qualities: [75, 85],
   },
   // Keep links to the old Webnode site working after the switch.
   async redirects() {
