@@ -93,7 +93,7 @@ export default function AboutPage() {
             nejsme jistí, že danou dovednost a potřebné znalosti má dobře zažité.
           </p>
           <p>
-            Nepřipravujeme vás jen na zkoušky. Chceme, abyste zvládli běžný provoz a poradili si i v nečekaných situacích.
+            Chceme, abyste zvládli běžný provoz a poradili si i v nečekaných situacích.
             Proto s vámi jezdíme i do Prahy, jako jediná autoškola v Rakovníku.
           </p>
           <p>Těší nás, že tahle metoda má u našich žáků velmi dobrou zpětnou vazbu.</p>
