@@ -13,7 +13,7 @@ import { site } from "@/lib/site";
 export const metadata = pageMeta({
   title: "O nás a Pomáháme",
   description:
-    "Autoškola TOP je moderní autoškola v Rakovníku s lidským přístupem. Vlastní učebna, vůz s klimatizací, jízdy do Prahy a každý rok řidičák zdarma pro někoho, kdo si ho nemůže dovolit.",
+    "Autoškola TOP je autoškola v Rakovníku s lidským přístupem. Vlastní učebna, vůz s klimatizací, jízdy do Prahy a každý rok řidičák zdarma pro někoho, kdo si ho nemůže dovolit.",
   path: "/o-nas",
   image: "/images/autoskola-top-vuz-mesto.webp",
 });
@@ -64,7 +64,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="Moderní autoškola s lidským přístupem"
+        title="Autoškola s lidským přístupem"
         lead="Žádný křik, ale klid a pohoda. Nebudeme vás lákat na nereálné ceny. Stojíme si za svými službami a co řekneme, to platí."
         crumbs={[{ name: "O nás", path: "/o-nas" }]}
       />
@@ -227,7 +227,13 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <CtaBand />
+      <CtaBand
+        image={{
+          src: "/images/autoskola-top-instruktor-vuz.webp",
+          alt: "Instruktor Autoškoly TOP za volantem výcvikového vozu",
+          position: "65% 55%",
+        }}
+      />
     </>
   );
 }

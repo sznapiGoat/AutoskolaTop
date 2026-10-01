@@ -7,11 +7,13 @@
 */
 :root {
   --bg: #ffffff;
-  --surface: #f7f5f2;
-  --surface-2: #efece7;
+  /* one cool slate grey family, matching the navy ink and footer */
+  --surface: #f5f6f8;
+  --surface-2: #eceef2;
   --ink: #1b1e25;
-  --muted: #5e6470;
-  --line: #e7e4df;
+  --muted: #5b6270;
+  --line: #e2e5ea;
+  --danger: #c2410c;
   --silver: #a7a7a7;
   --accent: #f26419;
   --accent-hover: #d9530e;
@@ -31,6 +33,17 @@
   color-scheme: light;
 }
 
+/* Header while it floats over the home page photo: same markup, light tokens. */
+.header-overlay {
+  --ink: #ffffff;
+  --muted: rgb(255 255 255 / 0.85);
+  --line: rgb(255 255 255 / 0.3);
+  --surface: rgb(255 255 255 / 0.12);
+  --accent-text: #ffb27f;
+  --logo-ink: #ffffff;
+  --logo-top: #d6d6d3;
+}
+
 /* Anything sitting on a dark panel gets the light version of the logo. */
 .on-dark {
   --logo-ink: #f2f1ee;
@@ -43,6 +56,7 @@
   --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-danger: var(--danger);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);

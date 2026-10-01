@@ -101,7 +101,7 @@ export default function PricingPage() {
                 className="group flex items-center justify-between gap-6 rounded-[var(--radius-card)] border border-line bg-surface p-5 transition-colors hover:border-ink"
               >
                 <span className="flex items-center gap-4">
-                  <IconTile className="size-12">
+                  <IconTile className="hidden size-12 sm:grid">
                     <ServiceIcon slug={s.slug} size={24} />
                   </IconTile>
                   <span>

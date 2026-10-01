@@ -116,7 +116,7 @@ export function HeroSlideshow({ slides }: { slides: HeroSlide[] }) {
 
       {/* switcher: one button per photo with its progress bar, plus pause */}
       <div className="absolute inset-x-0 bottom-0 z-10 hidden md:block">
-        <div className="container-page flex items-end justify-end gap-2 pb-20">
+        <div className="container-page flex items-end justify-end gap-2 pb-36 lg:pb-40">
           {slides.map((s, i) => (
             <button
               key={s.src}
@@ -163,7 +163,7 @@ export function HeroSlideshow({ slides }: { slides: HeroSlide[] }) {
       </div>
 
       {/* phones: simple dots, same behaviour */}
-      <div className="absolute right-3 bottom-10 z-10 flex items-center gap-0.5 md:hidden">
+      <div className="absolute right-3 bottom-6 z-10 flex items-center gap-0.5 md:hidden">
         {slides.map((s, i) => (
           <button
             key={s.src}
