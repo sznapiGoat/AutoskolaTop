@@ -21,8 +21,8 @@ export function WhyUs() {
       <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_1.25fr]">
         <Reveal className="relative min-h-80 overflow-hidden rounded-[var(--radius-card)]">
           <Image
-            src="/images/ucebna-stul-logo.webp"
-            alt="Učebna Autoškoly TOP v Rakovníku s logem na stěně a připravenými materiály"
+            src="/images/ucebna-autoskola-top-rakovnik.webp"
+            alt="Světlá učebna Autoškoly TOP v Rakovníku s velkým stolem a obrazovkou"
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
             className="object-cover"
@@ -37,8 +37,8 @@ export function WhyUs() {
           {reasons.map((r, i) => {
             const Icon = icons[i];
             return (
-              <RevealItem key={r.title} className="flex flex-col rounded-[var(--radius-card)] border border-line bg-white p-7">
-                <IconTile>
+              <RevealItem key={r.title} className="flex flex-col rounded-[var(--radius-card)] bg-surface p-7">
+                <IconTile className="bg-white [--icon-knock:#fff]">
                   <Icon size={28} />
                 </IconTile>
                 <h3 className="mt-6 font-display text-xl font-semibold">{r.title}</h3>

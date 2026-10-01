@@ -30,13 +30,13 @@ export function PlanCards({ compact = false }: { compact?: boolean }) {
               </span>
             )}
           </div>
-          <p className={cn("mt-1 text-sm", "text-muted")}>{plan.forWho}</p>
+          <p className="mt-1 min-h-10 text-sm text-muted">{plan.forWho}</p>
           <p className="mt-6 font-display text-4xl font-bold tabular-nums tracking-tight">{formatPrice(plan.price)}</p>
-          <p className={cn("mt-1 text-sm", "text-muted")}>
+          <p className="mt-1 text-sm text-muted">
             {plan.duration}, {plan.frequency}
           </p>
           {!compact && (
-            <ul className="mt-6 flex-1 space-y-3">
+            <ul className="mt-6 space-y-3">
               {plan.features.map((f) => (
                 <li key={f} className="flex gap-2.5 text-[0.95rem]">
                   <IconCheck size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
@@ -45,9 +45,11 @@ export function PlanCards({ compact = false }: { compact?: boolean }) {
               ))}
             </ul>
           )}
+          {/* spacer keeps every card's button on the same line */}
+          <div className="min-h-7 flex-1" />
           <Link
             href={`/kontakt?kurz=${plan.id}`}
-            className={buttonClass(plan.featured ? "primary" : "outline", "md", "mt-7 w-full")}
+            className={buttonClass(plan.featured ? "primary" : "outline", "md", "mt-auto w-full")}
           >
             Vybrat {plan.name}
           </Link>

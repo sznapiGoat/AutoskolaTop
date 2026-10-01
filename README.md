@@ -31,9 +31,12 @@ Old Webnode URLs (`/conabizime`, `/dobrocinna-akce`) and merged pages (`/jak-to-
 
 Light only (no dark mode), following the June version the client preferred: white and warm-grey surfaces, orange `#f26419` from the logo and the school car, Space Grotesk headings in sentence case, Inter body, rounded cards and pill buttons. Only the footer and the closing call to action are dark navy. Tokens live in `src/app/globals.css`.
 
-Home: hero card (copy + the school car photo) → why us → services grid → prices → FAQ → call to action.
+Home: full-bleed hero slideshow (`HeroSlideshow.tsx`) with a key-facts card overlapping its bottom edge → why us → services grid → prices → FAQ → call to action.
 
 ## Motion
+
+- Hero slideshow, no animation library: CSS Ken Burns (`animate-ken-burns`, transform only), opacity cross-fade, 7 s per slide. The switcher's progress bar is a CSS `scaleX` animation; an invisible bar running the same animation advances the slide on `animationend`, so pausing freezes bar and slideshow together. Stops in background tabs; no autoplay with reduced motion.
+- Service photos: `.photo-drift`, a one-time zoom-out tied to scroll (`animation-timeline: view()`; static where unsupported).
 
 - Above-the-fold entrances (hero headline, page titles, hero images) are **pure CSS** (`animate-rise`, `animate-fade-up`, `animate-settle` in `globals.css`), so they never wait for hydration and don't hurt LCP.
 - Below the fold: `Reveal` / `RevealGroup` (Motion `whileInView`), the scroll-driven road timeline (`RoadProcess`, on `/sluzby`), sliding nav/tab pills (`layoutId`).

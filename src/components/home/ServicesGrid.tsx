@@ -36,13 +36,15 @@ export function ServicesGrid() {
                     big ? "min-h-[20rem] lg:min-h-[22rem]" : "min-h-[16rem]",
                   )}
                 >
-                  <Image
-                    src={s.image}
-                    alt={s.imageAlt}
-                    fill
-                    sizes={big ? "(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
-                    className="-z-20 object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
-                  />
+                  <div className="photo-drift absolute inset-0 -z-20">
+                    <Image
+                      src={s.image}
+                      alt={s.imageAlt}
+                      fill
+                      sizes={big ? "(min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
+                      className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
+                    />
+                  </div>
                   <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
                   <span className="absolute top-4 right-4 rounded-full bg-white px-3 py-1 text-sm font-semibold text-ink">
                     {s.pricePrefix ? `${s.pricePrefix} ` : ""}

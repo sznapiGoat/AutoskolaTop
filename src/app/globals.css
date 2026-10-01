@@ -93,6 +93,42 @@
   animation: settle 1.4s var(--ease-out-expo) both;
 }
 
+/*
+  Hero slideshow (HeroSlideshow.tsx): the active photo slowly pushes in
+  (transform only, so it stays on the compositor); the switcher bar fills
+  over the slide's duration and its animationend advances the slide.
+*/
+@keyframes ken-burns {
+  from { transform: scale(1.03) translate3d(0, 0, 0); }
+  to { transform: scale(1.13) translate3d(var(--kb-x, -1.5%), var(--kb-y, -1%), 0); }
+}
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@utility animate-ken-burns {
+  animation: ken-burns 9s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+@utility animate-progress {
+  animation: progress var(--duration, 7s) linear both;
+  transform-origin: left;
+}
+
+/* Service photos ease in from a slight zoom once, as they scroll into view. */
+@keyframes drift {
+  from { transform: scale(1.16); }
+  to { transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .photo-drift {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
 /* Wing stripes start folded; anime.js unfolds them (see Wings.tsx). */
 @media (prefers-reduced-motion: no-preference) {
   [data-wings] path { transform: scaleX(0); }

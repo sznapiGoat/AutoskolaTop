@@ -1,96 +1,104 @@
-import Image from "next/image";
-import { IconArrowRight, IconCity, IconPhone, IconPin } from "@/components/icons/Icons";
+import { IconArrowRight, IconPhone, IconPin } from "@/components/icons/Icons";
 import { ButtonLink } from "@/components/ui/Button";
 import { FadeUp, SlideUpText } from "@/components/ui/SlideUpText";
 import { plans } from "@/lib/content";
 import { formatPrice, site } from "@/lib/site";
+import { HeroSlideshow, type HeroSlide } from "./HeroSlideshow";
+
+const slides: HeroSlide[] = [
+  {
+    src: "/images/autoskola-top-instruktor-vuz.webp",
+    alt: "Instruktor Autoškoly TOP za volantem oranžového výcvikového vozu v Rakovníku",
+    label: "Výcvikový vůz",
+    position: "62% 55%",
+    drift: { x: "-2%", y: "-1%" },
+  },
+  {
+    src: "/images/autoskola-top-vuz-mesto.webp",
+    alt: "Oranžový Renault Captur Autoškoly TOP v městském provozu",
+    label: "Jízdy v provozu",
+    position: "30% 60%",
+    drift: { x: "2%", y: "-1.5%" },
+  },
+  {
+    src: "/images/ucebna-stul-logo.webp",
+    alt: "Učebna Autoškoly TOP s logem na stěně a připravenými materiály",
+    label: "Učebna v centru",
+    position: "50% 40%",
+    drift: { x: "-1.5%", y: "1%" },
+  },
+];
 
 const fromPrice = Math.min(...plans.map((p) => p.price));
 
 const facts = [
-  { value: `od ${formatPrice(fromPrice)}`, label: "kurz sk. B" },
-  { value: `${site.facebookRating.percent} %`, label: "doporučení na Facebooku" },
+  { value: `od ${formatPrice(fromPrice)}`, label: "kurz řidičáku sk. B" },
+  { value: `${site.facebookRating.percent} %`, label: `doporučení na Facebooku (${site.facebookRating.reviews} recenzí)` },
+  { value: "Praha", label: "jízda v ceně každého kurzu" },
   { value: "2 splátky", label: "bez navýšení ceny" },
 ];
 
-/** One light card: the message on the left, the school's own car on the right. */
+/** Full-bleed photo hero with the key facts in a card overlapping its bottom edge. */
 export function Hero() {
   return (
-    <section className="container-page pt-3 pb-10 md:pt-5 md:pb-16">
-      <div className="grid gap-3 rounded-[2rem] border border-line bg-surface p-3 lg:min-h-[min(41rem,calc(100dvh-7.5rem))] lg:grid-cols-[1fr_1.1fr]">
-        <div className="flex flex-col justify-between gap-10 px-4 pt-6 pb-4 sm:px-7 sm:pt-9 lg:px-10 lg:py-10">
-          <div>
-            <FadeUp>
-              <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted">
-                <IconPin size={15} className="text-accent" aria-hidden="true" />
-                Autoškola v Rakovníku, {site.address.street}
-              </p>
-            </FadeUp>
-            <h1 className="mt-6 font-display text-[2.6rem] leading-[1.02] font-bold sm:text-6xl xl:text-[4.25rem]">
-              <SlideUpText as="span" text="Řidičák v Rakovníku." delay={0.1} className="block" />
-              <SlideUpText as="span" text="Bez stresu, s výsledkem." delay={0.25} className="block text-accent" />
-            </h1>
-            <FadeUp delay={0.45}>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-                Individuální přístup, pohodlný vůz s klimatizací a jízda do Prahy v ceně každého kurzu. Naučíme vás řídit,
-                nejen projít zkouškou.
-              </p>
-            </FadeUp>
-            <FadeUp delay={0.55} className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/kontakt" size="lg" className="group">
-                Chci řidičák
-                <IconArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </ButtonLink>
-              <ButtonLink href="/cenik" variant="outline" size="lg">
-                Zobrazit ceník
-              </ButtonLink>
-            </FadeUp>
-            <FadeUp delay={0.6}>
-              <a
-                href={site.phoneHref}
-                className="mt-6 inline-flex items-center gap-2 text-muted transition-colors hover:text-ink"
-              >
-                <IconPhone size={18} className="text-accent" aria-hidden="true" />
-                nebo volejte <span className="font-semibold text-ink">{site.phoneDisplay}</span>
-              </a>
-            </FadeUp>
-          </div>
+    <>
+      <section className="relative isolate flex min-h-[38rem] items-end overflow-hidden text-white md:min-h-[min(52rem,calc(100dvh-4.75rem))] md:items-center">
+        <HeroSlideshow slides={slides} />
+        {/* legibility: dark from the left on desktop, from the bottom on phones */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-linear-to-t from-[#0b0e13]/90 via-[#0b0e13]/45 to-[#0b0e13]/10 md:bg-linear-to-r md:from-[#0b0e13]/85 md:via-[#0b0e13]/55 md:to-[#0b0e13]/5"
+        />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 hidden h-48 bg-linear-to-t from-[#0b0e13]/60 to-transparent md:block" />
 
-          <FadeUp delay={0.7}>
-            <dl className="grid grid-cols-3 gap-3 border-t border-line pt-6">
-              {facts.map((f) => (
-                <div key={f.label} className="flex flex-col gap-0.5">
-                  <dt className="order-last text-xs leading-snug text-muted sm:text-sm">{f.label}</dt>
-                  <dd className="font-display text-lg font-bold tracking-tight sm:text-2xl">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
+        <div className="container-page pt-28 pb-24 md:py-24">
+          <FadeUp>
+            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-sm text-white/85 ring-1 ring-white/20 backdrop-blur-md">
+              <IconPin size={15} className="text-accent" aria-hidden="true" />
+              Autoškola v Rakovníku, {site.address.street}
+            </p>
+          </FadeUp>
+          <h1 className="mt-6 max-w-3xl font-display text-[2.75rem] leading-[1.02] font-bold tracking-[-0.025em] sm:text-6xl lg:text-7xl">
+            <SlideUpText as="span" text={"Řidičák v Rakovníku."} delay={0.1} className="block" />
+            <SlideUpText as="span" text="Bez stresu, s výsledkem." delay={0.25} className="block text-accent" />
+          </h1>
+          <FadeUp delay={0.45}>
+            <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-white/80">
+              Individuální přístup, pohodlný vůz s klimatizací a jízda do Prahy v ceně každého kurzu. Naučíme vás řídit,
+              nejen projít zkouškou.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.55} className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <ButtonLink href="/kontakt" size="lg" className="group">
+              Chci řidičák
+              <IconArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </ButtonLink>
+            <a
+              href={site.phoneHref}
+              className="group inline-flex items-center gap-2.5 text-lg font-semibold text-white transition-colors hover:text-accent"
+            >
+              <span className="grid size-11 place-items-center rounded-full bg-white/10 ring-1 ring-white/25 backdrop-blur-md transition-colors group-hover:bg-white group-hover:text-accent">
+                <IconPhone size={18} aria-hidden="true" />
+              </span>
+              {site.phoneDisplay}
+            </a>
           </FadeUp>
         </div>
+      </section>
 
-        <div className="relative min-h-[19rem] overflow-hidden rounded-[1.5rem] sm:min-h-[26rem]">
-          <Image
-            src="/images/autoskola-top-instruktor-vuz.webp"
-            alt="Instruktor Autoškoly TOP za volantem oranžového výcvikového vozu v Rakovníku"
-            fill
-            priority
-            sizes="(min-width: 1024px) 52vw, 100vw"
-            className="animate-settle object-cover object-[42%_50%]"
-          />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/35 to-transparent" />
-          <FadeUp delay={0.8} className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
-            <div className="flex items-center gap-3 rounded-2xl bg-white/95 py-3 pr-5 pl-3 shadow-soft backdrop-blur">
-              <span className="grid size-11 place-items-center rounded-xl bg-accent-soft text-accent-text">
-                <IconCity size={24} aria-hidden="true" />
-              </span>
-              <span className="leading-tight">
-                <span className="block font-semibold">Jízda do Prahy</span>
-                <span className="text-sm text-muted">v ceně každého kurzu</span>
-              </span>
-            </div>
-          </FadeUp>
-        </div>
+      {/* key facts, overlapping the photo's bottom edge */}
+      <div className="container-page relative z-10 -mt-8 md:-mt-12">
+        <FadeUp delay={0.7}>
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-card)] bg-white p-6 shadow-soft ring-1 ring-line md:p-8 lg:grid-cols-4 lg:divide-x lg:divide-line">
+            {facts.map((f) => (
+              <div key={f.label} className="flex flex-col gap-1 lg:px-6 lg:first:pl-0">
+                <dt className="order-last max-w-[24ch] text-sm leading-snug text-muted">{f.label}</dt>
+                <dd className="font-display text-xl font-bold tracking-tight tabular-nums sm:text-2xl md:text-3xl">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </FadeUp>
       </div>
-    </section>
+    </>
   );
 }
