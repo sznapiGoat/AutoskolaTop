@@ -3,24 +3,23 @@ import { FacebookLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react
 import { BrandLogo } from "@/components/brand/Logo";
 import { LogoLink } from "@/components/brand/LogoLink";
 import { Wings } from "@/components/brand/Wings";
-import { services } from "@/lib/content";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="on-dark asphalt relative overflow-hidden text-[#d9d8d3]">
-      <div aria-hidden="true" className="container-page flex items-center gap-4 pt-14 text-[#3a3a37]">
+    <footer className="on-dark asphalt relative overflow-hidden text-white/85">
+      <div aria-hidden="true" className="container-page flex items-center gap-4 pt-14 text-white/15">
         <Wings className="h-6 w-28 shrink-0" />
         <div className="h-px flex-1 bg-white/10" />
         <Wings side="right" className="h-6 w-28 shrink-0" />
       </div>
-      <div className="container-page grid gap-12 pt-10 pb-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div className="container-page grid gap-12 pt-10 pb-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr]">
         <div className="max-w-sm">
           <LogoLink className="inline-block rounded-lg">
             <BrandLogo variant="textured" className="w-52" />
           </LogoLink>
-          <p className="mt-5 leading-relaxed text-[#a6a59f]">{site.tagline} Autoškola pro Rakovník a okolí.</p>
+          <p className="mt-5 leading-relaxed text-white/65">{site.tagline} Autoškola pro Rakovník a okolí.</p>
           <div className="mt-6 flex gap-2">
             {[
               { href: site.social.facebook, label: "Facebook", Icon: FacebookLogo },
@@ -33,7 +32,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="grid size-11 place-items-center rounded-lg border border-white/10 text-white transition-colors hover:border-accent hover:bg-accent hover:text-[#151514]"
+                className="grid size-11 place-items-center rounded-lg border border-white/10 text-white transition-colors hover:border-accent hover:bg-accent hover:text-white"
               >
                 <Icon size={20} weight="fill" />
               </a>
@@ -41,25 +40,12 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Služby">
-          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Služby</h2>
-          <ul className="mt-4 space-y-2.5">
-            {services.map((s) => (
-              <li key={s.slug}>
-                <Link href={`/sluzby/${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
-                  {s.short}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <nav aria-label="Stránky">
           <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Autoškola</h2>
           <ul className="mt-4 space-y-2.5">
-            {[{ href: "/", label: "Úvod" }, ...nav, { href: "/sluzby#prubeh", label: "Průběh kurzu" }, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
+            {[{ href: "/", label: "Úvod" }, ...nav, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[#a6a59f] transition-colors hover:text-white">
+                <Link href={item.href} className="text-white/65 transition-colors hover:text-white">
                   {item.label}
                 </Link>
               </li>
@@ -69,7 +55,7 @@ export function Footer() {
 
         <div>
           <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Kontakt</h2>
-          <address className="mt-4 space-y-2.5 not-italic text-[#a6a59f]">
+          <address className="mt-4 space-y-2.5 not-italic text-white/65">
             <p>
               {site.address.street}, {site.address.zip} {site.address.city}
               <br />
@@ -93,7 +79,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-3 py-6 text-sm text-[#8b8a85] sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-3 py-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName}, IČO {site.ico}
           </p>

@@ -6,7 +6,7 @@ import { formatPrice, promo } from "@/lib/site";
 export function PromoBar() {
   return (
     <PromoGate>
-      <div className="bg-[#151514] text-[#f2f1ee]">
+      <div className="bg-road text-white">
         <Link
           href="/cenik"
           className="container-page group flex min-h-10 items-center justify-center gap-2 py-2 text-center text-sm"

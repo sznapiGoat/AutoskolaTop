@@ -7,11 +7,13 @@
 */
 :root {
   --bg: #ffffff;
-  --surface: #f7f5f2;
-  --surface-2: #efece7;
+  /* one cool slate grey family, matching the navy ink and footer */
+  --surface: #f5f6f8;
+  --surface-2: #eceef2;
   --ink: #1b1e25;
-  --muted: #5e6470;
-  --line: #e7e4df;
+  --muted: #5b6270;
+  --line: #e2e5ea;
+  --danger: #c2410c;
   --silver: #a7a7a7;
   --accent: #f26419;
   --accent-hover: #d9530e;
@@ -54,6 +56,7 @@
   --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-danger: var(--danger);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);

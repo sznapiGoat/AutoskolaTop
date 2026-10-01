@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const initial: InquiryState = { status: "idle" };
 
 const field =
-  "w-full rounded-xl border bg-surface px-4 py-3 text-base text-ink placeholder:text-[#8a8983] transition-colors focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20";
+  "w-full rounded-xl border bg-surface px-4 py-3 text-base text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20";
 
 function Field({
   id,
@@ -44,7 +44,7 @@ function Field({
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c]">
+        <p id={`${id}-error`} className="flex items-center gap-1.5 text-sm font-medium text-danger">
           <IconWarning size={16} aria-hidden="true" />
           {error}
         </p>
@@ -104,7 +104,7 @@ export function ContactForm() {
                 defaultValue={v.name}
                 aria-invalid={!!e.name}
                 aria-describedby={describedBy("name")}
-                className={cn(field, e.name ? "border-[#c2410c]" : "border-line")}
+                className={cn(field, e.name ? "border-danger" : "border-line")}
               />
             </Field>
             <Field id="phone" label="Telefon" error={e.phone} required>
@@ -117,7 +117,7 @@ export function ContactForm() {
                 defaultValue={v.phone}
                 aria-invalid={!!e.phone}
                 aria-describedby={describedBy("phone")}
-                className={cn(field, e.phone ? "border-[#c2410c]" : "border-line")}
+                className={cn(field, e.phone ? "border-danger" : "border-line")}
               />
             </Field>
           </div>
@@ -131,7 +131,7 @@ export function ContactForm() {
               defaultValue={v.email}
               aria-invalid={!!e.email}
               aria-describedby={describedBy("email", true)}
-              className={cn(field, e.email ? "border-[#c2410c]" : "border-line")}
+              className={cn(field, e.email ? "border-danger" : "border-line")}
             />
           </Field>
 
@@ -142,7 +142,7 @@ export function ContactForm() {
               defaultValue={v.service ?? (serviceOptions.some((o) => o.value === preselected) ? preselected : "")}
               aria-invalid={!!e.service}
               aria-describedby={describedBy("service")}
-              className={cn(field, "appearance-none bg-[right_1rem_center] bg-no-repeat pr-10", e.service ? "border-[#c2410c]" : "border-line")}
+              className={cn(field, "appearance-none bg-[right_1rem_center] bg-no-repeat pr-10", e.service ? "border-danger" : "border-line")}
               style={{
                 backgroundImage:
                   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 256 256'%3E%3Cpath fill='%238a8983' d='M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z'/%3E%3C/svg%3E\")",
@@ -166,7 +166,7 @@ export function ContactForm() {
               rows={4}
               defaultValue={v.message}
               aria-describedby={describedBy("message", true)}
-              className={cn(field, "resize-y", e.message ? "border-[#c2410c]" : "border-line")}
+              className={cn(field, "resize-y", e.message ? "border-danger" : "border-line")}
             />
           </Field>
 
@@ -194,7 +194,7 @@ export function ContactForm() {
               </span>
             </label>
             {e.consent && (
-              <p id="consent-error" className="flex items-center gap-1.5 text-sm font-medium text-[#c2410c]">
+              <p id="consent-error" className="flex items-center gap-1.5 text-sm font-medium text-danger">
                 <IconWarning size={16} aria-hidden="true" />
                 {e.consent}
               </p>
