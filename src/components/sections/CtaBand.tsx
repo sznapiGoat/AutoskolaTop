@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone } from "@phosphor-icons/react/dist/ssr";
+import { IconPhone } from "@/components/icons/Icons";
 import { Wings } from "@/components/brand/Wings";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -18,17 +18,17 @@ export function CtaBand({
         <div className="grid items-stretch md:grid-cols-[1.1fr_1fr]">
           <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:p-16">
             <Wings className="h-8 w-24 text-accent" />
-            <h2 className="mt-6 font-display text-5xl font-extrabold md:text-6xl">{title}</h2>
+            <h2 className="mt-6 font-display text-4xl font-bold md:text-5xl">{title}</h2>
             <p className="mt-4 max-w-md text-lg text-[#bdbcb7]">{text}</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/kontakt" variant="light" size="lg">
+              <ButtonLink href="/kontakt" size="lg">
                 Chci řidičák
               </ButtonLink>
               <a
                 href={site.phoneHref}
                 className="inline-flex h-13 items-center gap-2 rounded-lg px-4 font-semibold transition-colors hover:text-accent"
               >
-                <Phone size={18} weight="bold" aria-hidden="true" />
+                <IconPhone size={18} aria-hidden="true" />
                 {site.phoneDisplay}
               </a>
             </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
-import { ArrowRight, CarProfile } from "@phosphor-icons/react";
+import { IconArrowRight, IconCar } from "@/components/icons/Icons";
 import { steps } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -19,28 +19,28 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
   const carTop = useTransform(progress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="asphalt text-[#f2f1ee]" aria-labelledby="postup-nadpis">
+    <section className="bg-surface text-ink" aria-labelledby="postup-nadpis">
       <div className="container-page py-20 md:py-28">
         <div className="max-w-2xl">
           <h2 id="postup-nadpis" className="font-display text-4xl leading-[1.05] font-bold md:text-5xl">
             Cesta k řidičáku
           </h2>
-          <p className="mt-4 text-lg text-[#a6a59f]">Šest zastávek. Na každé víte přesně, co vás čeká.</p>
+          <p className="mt-4 text-lg text-muted">Šest zastávek. Na každé víte přesně, co vás čeká.</p>
         </div>
 
         <ol ref={ref} className="relative mt-14 md:mt-20">
           {/* road */}
           <div aria-hidden="true" className="absolute top-0 bottom-0 left-5 w-10 -translate-x-1/2 md:left-1/2">
-            <div className="absolute inset-0 rounded-full bg-[#262624]" />
-            <div className="absolute inset-y-4 left-1/2 w-[3px] -translate-x-1/2 bg-[repeating-linear-gradient(180deg,rgb(255_255_255/0.18)_0_18px,transparent_18px_34px)]" />
+            <div className="absolute inset-0 rounded-full bg-line" />
+            <div className="absolute inset-y-4 left-1/2 w-[3px] -translate-x-1/2 bg-[repeating-linear-gradient(180deg,rgb(27_30_37/0.25)_0_18px,transparent_18px_34px)]" />
             <motion.div
               style={{ scaleY: reduce ? 1 : progress }}
               className="absolute inset-y-4 left-1/2 w-[3px] origin-top -translate-x-1/2 bg-[repeating-linear-gradient(180deg,#f26b1d_0_18px,transparent_18px_34px)]"
             />
             {!reduce && (
               <motion.div style={{ top: carTop }} className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="grid size-10 rotate-90 place-items-center rounded-full bg-accent text-[#151514] shadow-[0_0_0_6px_rgb(242_107_29/0.2)]">
-                  <CarProfile size={22} weight="fill" />
+                <span className="grid size-10 rotate-90 place-items-center rounded-full bg-accent text-white shadow-[0_0_0_6px_rgb(242_107_29/0.2)]">
+                  <IconCar size={22} />
                 </span>
               </motion.div>
             )}
@@ -62,7 +62,7 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
                 >
                   <span className="font-display text-sm font-semibold text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-1 font-display text-2xl font-semibold md:text-3xl">{step.title}</h3>
-                  <p className={cn("mt-2 max-w-md leading-relaxed text-[#a6a59f]", !right && "md:ml-auto")}>
+                  <p className={cn("mt-2 max-w-md leading-relaxed text-muted", !right && "md:ml-auto")}>
                     {step.text}
                   </p>
                 </motion.div>
@@ -75,10 +75,10 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
           <div className="mt-16 md:text-center">
             <Link
               href="/sluzby#prubeh"
-              className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-[#ff8a47]"
+              className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
             >
               Jak přesně kurz probíhá
-              <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
         )}

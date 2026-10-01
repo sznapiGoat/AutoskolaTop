@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Briefcase, FacebookLogo, HandHeart, HouseLine, InstagramLogo, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/dist/ssr";
+import { IconBriefcase, IconFriends, IconHeart, IconHome } from "@/components/icons/Icons";
 import { Wings } from "@/components/brand/Wings";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -18,10 +19,10 @@ export const metadata = pageMeta({
 });
 
 const charityBenefits = [
-  { Icon: HandHeart, title: "Plně hrazený kurz", text: "Od první hodiny teorie až po poslední 28. hodinu jízdy." },
-  { Icon: Briefcase, title: "Šance na lepší práci", text: "Řada pracovních pozic dnes řidičák vyžaduje." },
-  { Icon: HouseLine, title: "Svoboda a samostatnost", text: "Snazší cesta za rodinou, k lékaři nebo do školy." },
-  { Icon: UsersThree, title: "Podpora komunity", text: "Pocit, že v tom člověk není sám a někdo mu věří." },
+  { Icon: IconHeart, title: "Plně hrazený kurz", text: "Od první hodiny teorie až po poslední 28. hodinu jízdy." },
+  { Icon: IconBriefcase, title: "Šance na lepší práci", text: "Řada pracovních pozic dnes řidičák vyžaduje." },
+  { Icon: IconHome, title: "Svoboda a samostatnost", text: "Snazší cesta za rodinou, k lékaři nebo do školy." },
+  { Icon: IconFriends, title: "Podpora komunity", text: "Pocit, že v tom člověk není sám a někdo mu věří." },
 ];
 
 const timeline = [
@@ -84,7 +85,7 @@ export default function AboutPage() {
       <section className="container-page grid gap-12 py-16 md:grid-cols-2 md:gap-16">
         <Reveal>
           <Wings className="h-7 w-20 text-accent" />
-          <h2 className="mt-5 font-display text-5xl font-extrabold md:text-6xl">S námi správnou cestou</h2>
+          <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">S námi správnou cestou</h2>
         </Reveal>
         <Reveal delay={0.1} className="space-y-5 text-lg leading-relaxed text-muted">
           <p>
@@ -109,10 +110,10 @@ export default function AboutPage() {
             className="object-cover"
           />
         </Reveal>
-        <Reveal from="right" className="on-dark asphalt flex flex-col justify-between gap-8 rounded-[var(--radius-card)] p-8 text-panel-ink md:p-10">
+        <Reveal from="right" className="border border-line bg-surface flex flex-col justify-between gap-8 rounded-[var(--radius-card)] p-8 text-ink md:p-10">
           <div>
-            <h2 className="font-display text-4xl font-extrabold">Učebna v centru</h2>
-            <p className="mt-4 text-[#bdbcb7]">
+            <h2 className="font-display text-4xl font-bold">Učebna v centru</h2>
+            <p className="mt-4 text-muted">
               Najdete nás v budově Raportu naproti Rakoně ve 2. patře. Teorie, testy nanečisto i zápis do kurzu probíhají
               tady.
             </p>
@@ -121,7 +122,7 @@ export default function AboutPage() {
             <p className="font-semibold">
               {site.address.street}, {site.address.zip} {site.address.city}
             </p>
-            <p className="text-[#bdbcb7]">
+            <p className="text-muted">
               {site.hours.label}, {site.hours.note}
             </p>
           </address>
@@ -129,22 +130,22 @@ export default function AboutPage() {
       </section>
 
       {/* Pomáháme: the yearly charity programme (previously its own page) */}
-      <section id="pomahame" aria-labelledby="pomahame-h" className="on-dark asphalt mt-16 text-panel-ink">
+      <section id="pomahame" aria-labelledby="pomahame-h" className="mt-16 border-y border-line bg-surface text-ink">
         <div className="container-page py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal from="left">
-              <p className="font-display text-lg font-semibold uppercase tracking-[0.12em] text-accent">Pomáháme</p>
-              <h2 id="pomahame-h" className="mt-3 font-display text-5xl font-extrabold md:text-7xl">
+              <p className="font-display text-lg font-semibold tracking-[0.04em] text-accent">Pomáháme</p>
+              <h2 id="pomahame-h" className="mt-3 font-display text-5xl font-bold md:text-6xl">
                 Jeden rok, jeden člověk, jeden řidičák
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#cfcec9]">
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
                 Každý rok zaplatíme celý kurz někomu, kdo si ho z finančních nebo životních důvodů nemůže dovolit.
                 Hledáme lidi s opravdovým příběhem: samoživitele, studenty z méně podnětného prostředí, lidi po životní
                 změně. Nejde o dokonalé životopisy, ale o upřímnost, odvahu a motivaci.
               </p>
               <ButtonLink
                 href={`mailto:${site.email}?subject=Nominace%20do%20dobro%C4%8Dinn%C3%A9%20akce`}
-                variant="light"
+                variant="primary"
                 size="lg"
                 className="mt-8"
               >
@@ -164,24 +165,24 @@ export default function AboutPage() {
 
           <RevealGroup className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {charityBenefits.map(({ Icon, title, text }) => (
-              <RevealItem key={title} className="rounded-[var(--radius-card)] border border-white/10 bg-white/[0.03] p-6">
-                <Icon size={30} weight="duotone" className="text-accent" aria-hidden="true" />
+              <RevealItem key={title} className="rounded-[var(--radius-card)] border border-line bg-white/[0.03] p-6">
+                <Icon size={30} className="text-accent" aria-hidden="true" />
                 <h3 className="mt-6 font-display text-2xl font-bold">{title}</h3>
-                <p className="mt-2 text-[#bdbcb7]">{text}</p>
+                <p className="mt-2 text-muted">{text}</p>
               </RevealItem>
             ))}
           </RevealGroup>
 
-          <h3 className="mt-20 font-display text-3xl font-bold uppercase">Jak probíhá výběr</h3>
-          <p className="mt-3 max-w-[60ch] text-[#bdbcb7]">
+          <h3 className="mt-20 font-display text-3xl font-bold">Jak probíhá výběr</h3>
+          <p className="mt-3 max-w-[60ch] text-muted">
             Kombinujeme hlasování veřejnosti a názor nezávislé poroty, aby byl výběr co nejférovější.
           </p>
           <RevealGroup className="mt-10 grid gap-8 md:grid-cols-4">
             {timeline.map((t) => (
               <RevealItem key={t.what} className="border-t-2 border-accent pt-5">
                 <p className="text-sm font-semibold text-accent">{t.when}</p>
-                <h4 className="mt-2 font-display text-2xl font-bold uppercase">{t.what}</h4>
-                <p className="mt-2 text-[#bdbcb7]">{t.text}</p>
+                <h4 className="mt-2 font-display text-2xl font-bold">{t.what}</h4>
+                <p className="mt-2 text-muted">{t.text}</p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -190,7 +191,7 @@ export default function AboutPage() {
 
       <section className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[1fr_1.6fr]">
         <div>
-          <h2 className="font-display text-4xl font-extrabold md:text-5xl">Podmínky akce</h2>
+          <h2 className="font-display text-4xl font-bold md:text-5xl">Podmínky akce</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
             Můžete také sdílet naši výzvu, nominovat někoho, kdo si šanci zaslouží, nebo se zapojit jako partner akce.
           </p>
@@ -209,7 +210,7 @@ export default function AboutPage() {
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="font-display text-4xl font-extrabold md:text-5xl">Hrdí partneři FBC Rakovník</h2>
+          <h2 className="font-display text-4xl font-bold md:text-5xl">Hrdí partneři FBC Rakovník</h2>
           <p className="mt-4 max-w-[55ch] text-lg leading-relaxed text-muted">
             Fandíme rakovnickému florbalu a podporujeme místní sport. Jsme autoškola odsud a chceme, aby to bylo znát.
           </p>

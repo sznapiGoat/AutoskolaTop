@@ -13,7 +13,7 @@ export function SlideUpText({
   text: string;
   className?: string;
   delay?: number;
-  as?: "h1" | "h2" | "p";
+  as?: "h1" | "h2" | "p" | "span";
 }) {
   const words = text.split(" ");
   return (

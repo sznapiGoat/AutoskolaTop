@@ -11,10 +11,8 @@ const nextConfig: NextConfig = {
       { source: "/dobrocinna-akce", destination: "/o-nas#pomahame", permanent: true },
       { source: "/faq", destination: "/caste-dotazy", permanent: true },
       // pages merged in the v2 restructure
-      { source: "/cenik", destination: "/sluzby#cenik", permanent: true },
       { source: "/jak-to-probiha", destination: "/sluzby#prubeh", permanent: true },
       { source: "/pomahame", destination: "/o-nas#pomahame", permanent: true },
-      { source: "/sluzby/:slug", destination: "/sluzby#:slug", permanent: true },
     ];
   },
 };

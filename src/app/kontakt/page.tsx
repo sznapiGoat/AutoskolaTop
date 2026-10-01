@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { ArrowSquareOut, Clock, EnvelopeSimple, MapPin, Phone, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { IconClock, IconExternal, IconMail, IconPhone, IconPin } from "@/components/icons/Icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { MapEmbed } from "@/components/sections/MapEmbed";
@@ -14,10 +15,10 @@ export const metadata = pageMeta({
 });
 
 const contacts = [
-  { Icon: Phone, label: "Telefon", value: site.phone, href: site.phoneHref },
+  { Icon: IconPhone, label: "Telefon", value: site.phone, href: site.phoneHref },
   { Icon: WhatsappLogo, label: "WhatsApp", value: "Napište nám zprávu", href: site.whatsappHref, external: true },
-  { Icon: EnvelopeSimple, label: "E-mail", value: site.email, href: `mailto:${site.email}` },
-  { Icon: Clock, label: "Provozní doba", value: site.hours.label, note: site.hours.note },
+  { Icon: IconMail, label: "E-mail", value: site.email, href: `mailto:${site.email}` },
+  { Icon: IconClock, label: "Provozní doba", value: site.hours.label, note: site.hours.note },
 ];
 
 export default function ContactPage() {
@@ -40,7 +41,7 @@ export default function ContactPage() {
               const inner = (
                 <>
                   <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-text">
-                    <Icon size={22} weight="duotone" aria-hidden="true" />
+                    <Icon size={22} aria-hidden="true" />
                   </span>
                   <span>
                     <span className="block text-sm text-muted">{label}</span>
@@ -67,12 +68,12 @@ export default function ContactPage() {
             })}
           </ul>
 
-          <div className="rounded-[var(--radius-card)] bg-panel p-6 text-panel-ink md:p-7">
+          <div className="rounded-[var(--radius-card)] bg-white border border-line p-6 text-ink md:p-7">
             <div className="flex items-start gap-3">
-              <MapPin size={24} weight="fill" className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <IconPin size={24} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
               <div>
                 <h2 className="font-display text-xl font-semibold">Kde máme učebnu</h2>
-                <address className="mt-1 not-italic text-panel-ink/75">
+                <address className="mt-1 not-italic text-muted">
                   {site.address.street}, {site.address.zip} {site.address.city}
                   <br />
                   {site.address.note}
@@ -81,10 +82,10 @@ export default function ContactPage() {
                   href={site.mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-[#ff8a47]"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
                 >
                   Navigovat
-                  <ArrowSquareOut size={14} weight="bold" aria-hidden="true" />
+                  <IconExternal size={14} aria-hidden="true" />
                 </a>
               </div>
             </div>

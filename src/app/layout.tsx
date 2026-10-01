@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,15 +9,14 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { localBusinessLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-// Condensed heavy caps, the same voice as "AUTOŠKOLA" in the logo.
-const heading = Barlow_Condensed({
+const heading = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const body = Barlow({
+const body = Inter({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",
@@ -27,7 +26,7 @@ const body = Barlow({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Autoškola TOP Rakovník | Řidičák v klidu a bez křiku",
+    default: "Autoškola TOP Rakovník | Řidičák bez stresu, s výsledkem",
     template: "%s | Autoškola TOP Rakovník",
   },
   description: site.description,
@@ -53,10 +52,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f3f1" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
-  ],
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

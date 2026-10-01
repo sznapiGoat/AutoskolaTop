@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CaretRight } from "@phosphor-icons/react/dist/ssr";
+import { IconCaretRight } from "@/components/icons/Icons";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { FadeUp, SlideUpText } from "@/components/ui/SlideUpText";
@@ -29,7 +29,7 @@ export function PageHero({
           </li>
           {crumbs.map((c, i) => (
             <li key={c.path} className="flex items-center gap-1.5">
-              <CaretRight size={12} aria-hidden="true" />
+              <IconCaretRight size={12} aria-hidden="true" />
               {i === crumbs.length - 1 ? (
                 <span aria-current="page" className="text-ink">
                   {c.name}

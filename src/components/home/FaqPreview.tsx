@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { IconArrowRight } from "@/components/icons/Icons";
 import { Accordion } from "@/components/ui/Accordion";
 import { getFaqs } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -23,7 +23,7 @@ export function FaqPreview() {
         </p>
         <Link href="/caste-dotazy" className="group mt-6 inline-flex items-center gap-2 font-semibold text-accent-text">
           Všechny dotazy
-          <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>
       <Accordion items={items} />

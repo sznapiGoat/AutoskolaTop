@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FacebookLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { BrandLogo } from "@/components/brand/Logo";
+import { LogoLink } from "@/components/brand/LogoLink";
 import { Wings } from "@/components/brand/Wings";
 import { services } from "@/lib/content";
 import { nav, site } from "@/lib/site";
@@ -16,9 +17,9 @@ export function Footer() {
       </div>
       <div className="container-page grid gap-12 pt-10 pb-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div className="max-w-sm">
-          <Link href="/" aria-label="Autoškola TOP Rakovník, úvodní stránka" className="inline-block rounded-lg">
+          <LogoLink className="inline-block rounded-lg">
             <BrandLogo variant="textured" className="w-52" />
-          </Link>
+          </LogoLink>
           <p className="mt-5 leading-relaxed text-[#a6a59f]">{site.tagline} Autoškola pro Rakovník a okolí.</p>
           <div className="mt-6 flex gap-2">
             {[
@@ -41,11 +42,11 @@ export function Footer() {
         </div>
 
         <nav aria-label="Služby">
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Služby</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Služby</h2>
           <ul className="mt-4 space-y-2.5">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/sluzby#${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
+                <Link href={`/sluzby/${s.slug}`} className="text-[#a6a59f] transition-colors hover:text-white">
                   {s.short}
                 </Link>
               </li>
@@ -54,9 +55,9 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Stránky">
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Autoškola</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Autoškola</h2>
           <ul className="mt-4 space-y-2.5">
-            {[{ href: "/", label: "Úvod" }, ...nav, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
+            {[{ href: "/", label: "Úvod" }, ...nav, { href: "/sluzby#prubeh", label: "Průběh kurzu" }, { href: "/o-nas#pomahame", label: "Pomáháme" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-[#a6a59f] transition-colors hover:text-white">
                   {item.label}
@@ -67,7 +68,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-display text-base font-bold tracking-[0.08em] text-white">Kontakt</h2>
+          <h2 className="font-display text-sm font-semibold tracking-[0.08em] text-white/60 uppercase">Kontakt</h2>
           <address className="mt-4 space-y-2.5 not-italic text-[#a6a59f]">
             <p>
               {site.address.street}, {site.address.zip} {site.address.city}

@@ -4,10 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { List, Phone, X } from "@phosphor-icons/react";
+import Image from "next/image";
+import { IconArrowRight, IconCaretDown, IconClose, IconMenu, IconPhone } from "@/components/icons/Icons";
 import { BrandLogo } from "@/components/brand/Logo";
+import { LogoLink } from "@/components/brand/LogoLink";
 import { buttonClass } from "@/components/ui/Button";
-import { nav, site } from "@/lib/site";
+import { services } from "@/lib/content";
+import { formatPrice, nav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -17,6 +20,7 @@ export function Header() {
   const barRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [dropdown, setDropdown] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 12));
@@ -26,7 +30,16 @@ export function Header() {
   if (lastPath !== pathname) {
     setLastPath(pathname);
     setOpen(false);
+    setDropdown(false);
   }
+
+  // Escape closes the services dropdown.
+  useEffect(() => {
+    if (!dropdown) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setDropdown(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [dropdown]);
 
   // Lock page scroll while the mobile menu is open.
   useEffect(() => {
@@ -51,20 +64,25 @@ export function Header() {
         )}
       >
         <div className="container-page flex h-[4.75rem] items-center justify-between gap-6">
-          <Link href="/" aria-label="Autoškola TOP Rakovník, úvodní stránka" className="-my-1 rounded-lg">
+          <LogoLink className="-my-1 rounded-lg" onNavigate={() => setOpen(false)}>
             <BrandLogo className="w-[6.25rem] sm:w-[7rem]" title="Autoškola TOP Rakovník" />
-          </Link>
+          </LogoLink>
 
           <nav aria-label="Hlavní navigace" className="hidden lg:block">
             <ul className="flex items-center" onMouseLeave={() => setHovered(null)}>
               {nav.map((item) => (
-                <li key={item.href}>
+                <li
+                  key={item.href}
+                  className={cn(item.children && "relative flex items-center")}
+                  onMouseEnter={item.children ? () => setDropdown(true) : undefined}
+                  onMouseLeave={item.children ? () => setDropdown(false) : undefined}
+                >
                   <Link
                     href={item.href}
                     onMouseEnter={() => setHovered(item.href)}
                     aria-current={active === item.href ? "page" : undefined}
                     className={cn(
-                      "relative block rounded-lg px-4 py-2 font-display text-[1.05rem] font-semibold uppercase tracking-[0.04em] transition-colors",
+                      "relative block rounded-lg px-4 py-2 text-[0.95rem] font-medium transition-colors",
                       active === item.href ? "text-ink" : "text-muted hover:text-ink",
                     )}
                   >
@@ -77,6 +95,69 @@ export function Header() {
                     )}
                     {item.label}
                   </Link>
+                  {item.children && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setDropdown((v) => !v)}
+                        aria-expanded={dropdown}
+                        aria-controls="sluzby-menu"
+                        aria-label="Zobrazit jednotlivé služby"
+                        className="-ml-3 grid size-8 place-items-center rounded-md text-muted transition-colors hover:text-ink"
+                      >
+                        <IconCaretDown size={14} className={cn("transition-transform", dropdown && "rotate-180")} />
+                      </button>
+                      <AnimatePresence>
+                        {dropdown && (
+                          <motion.div
+                            id="sluzby-menu"
+                            initial={{ opacity: 0, y: -8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute top-full left-0 pt-3"
+                          >
+                            <div className="w-[38rem] rounded-[var(--radius-card)] border border-line bg-surface p-3 shadow-soft">
+                              <ul className="grid grid-cols-2 gap-1">
+                                {services.map((s) => (
+                                  <li key={s.slug}>
+                                    <Link
+                                      href={`/sluzby/${s.slug}`}
+                                      className={cn(
+                                        "flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-surface-2",
+                                        pathname === `/sluzby/${s.slug}` && "bg-surface-2",
+                                      )}
+                                    >
+                                      <span className="relative size-14 shrink-0 overflow-hidden rounded-md bg-surface-2">
+                                        <Image src={s.image} alt="" fill sizes="56px" className="object-cover" />
+                                      </span>
+                                      <span>
+                                        <span className="block font-display text-lg leading-tight font-bold">{s.short}</span>
+                                        <span className="text-sm text-muted">
+                                          {s.pricePrefix ? `${s.pricePrefix} ` : ""}
+                                          {formatPrice(s.price)}
+                                        </span>
+                                      </span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                              <div className="mt-2 flex items-center justify-between rounded-lg bg-surface-2 px-4 py-3 text-sm font-semibold">
+                                <Link href="/sluzby" className="group inline-flex items-center gap-1.5 hover:text-accent-text">
+                                  Přehled služeb a průběh kurzu
+                                  <IconArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                                </Link>
+                                <Link href="/cenik" className="group inline-flex items-center gap-1.5 hover:text-accent-text">
+                                  Ceník
+                                  <IconArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                                </Link>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
@@ -87,7 +168,7 @@ export function Header() {
               href={site.phoneHref}
               className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-ink transition-colors hover:text-accent-text md:inline-flex"
             >
-              <Phone size={18} weight="bold" aria-hidden="true" />
+              <IconPhone size={18} aria-hidden="true" />
               {site.phoneDisplay}
             </a>
             <Link href="/kontakt" className={buttonClass("primary", "md", "hidden sm:inline-flex")}>
@@ -105,7 +186,7 @@ export function Header() {
               aria-label={open ? "Zavřít menu" : "Otevřít menu"}
               className="grid size-11 place-items-center rounded-lg border border-line bg-surface text-ink lg:hidden"
             >
-              {open ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
+              {open ? <IconClose size={20} /> : <IconMenu size={20} />}
             </button>
           </div>
         </div>
@@ -135,12 +216,29 @@ export function Header() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "block py-4 font-display text-3xl font-bold uppercase",
+                        "block py-4 font-display text-3xl font-bold",
                         pathname === item.href ? "text-accent-text" : "text-ink",
                       )}
                     >
                       {item.label}
                     </Link>
+                    {item.children && (
+                      <ul className="-mt-1 grid grid-cols-2 gap-x-4 gap-y-1 pb-4">
+                        {item.children.map((c) => (
+                          <li key={c.href}>
+                            <Link
+                              href={c.href}
+                              className={cn(
+                                "block py-1.5 text-[1.05rem] font-medium",
+                                pathname === c.href ? "text-accent-text" : "text-muted",
+                              )}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </motion.li>
                 ))}
               </ul>
@@ -149,7 +247,7 @@ export function Header() {
                   Chci řidičák
                 </Link>
                 <a href={site.phoneHref} className={buttonClass("outline", "lg")}>
-                  <Phone size={18} weight="bold" aria-hidden="true" />
+                  <IconPhone size={18} aria-hidden="true" />
                   {site.phone}
                 </a>
               </div>
