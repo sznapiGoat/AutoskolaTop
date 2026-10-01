@@ -51,6 +51,8 @@ export function Header() {
 
   const active = nav.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))?.href;
   const highlight = hovered ?? active;
+  // On the home page the bar floats transparently over the hero photo until you scroll or open a menu.
+  const overlay = pathname === "/" && !scrolled && !open && !dropdown;
 
   return (
     <header className="sticky top-0 z-40">
@@ -58,9 +60,11 @@ export function Header() {
         ref={barRef}
         className={cn(
           "transition-[background-color,box-shadow,border-color] duration-300",
-          scrolled || open
-            ? "border-b border-line bg-bg/85 backdrop-blur-xl"
-            : "border-b border-transparent bg-bg",
+          overlay
+            ? "header-overlay border-b border-transparent bg-transparent"
+            : scrolled || open
+              ? "border-b border-line bg-bg/85 backdrop-blur-xl"
+              : "border-b border-transparent bg-bg",
         )}
       >
         <div className="container-page flex h-[4.75rem] items-center justify-between gap-6">

@@ -31,6 +31,17 @@
   color-scheme: light;
 }
 
+/* Header while it floats over the home page photo: same markup, light tokens. */
+.header-overlay {
+  --ink: #ffffff;
+  --muted: rgb(255 255 255 / 0.85);
+  --line: rgb(255 255 255 / 0.3);
+  --surface: rgb(255 255 255 / 0.12);
+  --accent-text: #ffb27f;
+  --logo-ink: #ffffff;
+  --logo-top: #d6d6d3;
+}
+
 /* Anything sitting on a dark panel gets the light version of the logo. */
 .on-dark {
   --logo-ink: #f2f1ee;
