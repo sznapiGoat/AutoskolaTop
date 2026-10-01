@@ -38,7 +38,7 @@ export default function ServicesPage() {
       <section className="container-page pb-8" aria-label="Přehled služeb">
         <Link
           href={`/sluzby/${main.slug}`}
-          className="group border border-line bg-surface grid overflow-hidden rounded-[1.5rem] text-ink md:grid-cols-2"
+          className="group border border-line bg-surface grid overflow-hidden rounded-[var(--radius-card)] text-ink md:grid-cols-2"
         >
           <div className="relative min-h-72 md:min-h-[26rem]">
             <Image
@@ -60,7 +60,7 @@ export default function ServicesPage() {
               <p className="text-muted">
                 od <span className="font-display text-4xl font-bold text-ink">{formatPrice(main.price)}</span>
               </p>
-              <span className="grid size-14 place-items-center rounded-lg bg-ink text-white transition-colors group-hover:bg-accent group-hover:text-on-accent">
+              <span className="grid size-14 place-items-center rounded-full bg-ink text-white transition-colors group-hover:bg-accent group-hover:text-on-accent">
                 <IconArrowUpRight size={24} aria-hidden="true" />
               </span>
             </div>
@@ -91,7 +91,7 @@ export default function ServicesPage() {
                   <p className="mt-2 flex-1 leading-relaxed text-muted">{s.pitch}</p>
                   <div className="mt-6 flex items-center justify-between">
                     <p className="font-display text-2xl font-bold">{formatPrice(s.price)}</p>
-                    <span className="grid size-10 place-items-center rounded-lg bg-surface-2 transition-colors group-hover:bg-accent group-hover:text-on-accent">
+                    <span className="grid size-10 place-items-center rounded-full bg-surface-2 transition-colors group-hover:bg-accent group-hover:text-on-accent">
                       <IconArrowUpRight size={18} aria-hidden="true" />
                     </span>
                   </div>
@@ -112,7 +112,7 @@ export default function ServicesPage() {
           <RevealGroup className="mt-10 grid gap-4 md:grid-cols-3">
             {documents.map(({ Icon, title, text }) => (
               <RevealItem key={title} className="rounded-[var(--radius-card)] border border-line bg-surface p-7">
-                <span className="grid size-12 place-items-center rounded-lg bg-accent-soft text-accent-text">
+                <span className="grid size-12 place-items-center rounded-xl bg-accent-soft text-accent-text">
                   <Icon size={24} aria-hidden="true" />
                 </span>
                 <h3 className="mt-6 font-display text-2xl font-bold">{title}</h3>

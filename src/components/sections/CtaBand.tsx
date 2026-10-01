@@ -21,7 +21,7 @@ export function CtaBand({
 }) {
   return (
     <section className="container-page pt-16 pb-20 md:pt-24 md:pb-28">
-      <Reveal className="relative isolate overflow-hidden rounded-[1.75rem] text-white">
+      <Reveal className="relative isolate overflow-hidden rounded-[var(--radius-card)] text-white">
         <Image
           src={image.src}
           alt={image.alt}

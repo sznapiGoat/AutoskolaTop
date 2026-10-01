@@ -23,7 +23,7 @@ export function PlanCards({ compact = false }: { compact?: boolean }) {
               <span
                 className={cn(
                   "rounded-md px-2.5 py-1 text-xs font-semibold",
-                  plan.featured ? "bg-accent text-on-accent" : "bg-surface text-ink",
+                  plan.featured ? "bg-accent-strong text-on-accent" : "bg-surface text-ink",
                 )}
               >
                 {plan.badge}

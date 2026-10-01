@@ -22,7 +22,7 @@ export const metadata = pageMeta({
 const payment = [
   { Icon: IconCoins, title: "Záloha při nástupu", text: "Minimálně 10 000 Kč, když začínáte kurz." },
   { Icon: IconCalendar, title: "Doplatek", text: "Nejpozději 14 dní před ukončením kurzu." },
-  { Icon: IconReceipt, title: "Cena je konečná", text: "Nezahrnuje jen správní poplatek za zkoušku, který platíte úřadu." },
+  { Icon: IconReceipt, title: "Cena je konečná", text: "Navíc platíte jen správní poplatek za zkoušku, a to přímo úřadu." },
 ];
 
 const paymentFaqs = faqs.filter((f) => f.category === "Platba");
@@ -39,7 +39,7 @@ export default function PricingPage() {
 
       <section className="container-page pb-16" aria-labelledby="kurzy-b">
         <PromoGate>
-          <Reveal className="mb-8 flex flex-col gap-2 rounded-[var(--radius-card)] bg-accent p-6 text-on-accent sm:flex-row sm:items-center sm:justify-between md:px-8">
+          <Reveal className="mb-8 flex flex-col gap-2 rounded-[var(--radius-card)] bg-accent-strong p-6 text-on-accent sm:flex-row sm:items-center sm:justify-between md:px-8">
             <p className="font-display text-2xl font-bold">
               {promo.label} jen za {formatPrice(promo.price)}
             </p>

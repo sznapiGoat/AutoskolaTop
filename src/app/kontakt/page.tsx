@@ -56,12 +56,12 @@ export default function ContactPage() {
                     <a
                       href={href}
                       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-ink"
+                      className="flex items-center gap-4 rounded-[var(--radius-card)] border border-line bg-surface p-4 transition-colors hover:border-ink"
                     >
                       {inner}
                     </a>
                   ) : (
-                    <div className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-4">{inner}</div>
+                    <div className="flex items-center gap-4 rounded-[var(--radius-card)] border border-line bg-surface p-4">{inner}</div>
                   )}
                 </li>
               );
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   href={site.mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-text hover:text-accent-hover"
                 >
                   Navigovat
                   <IconExternal size={14} aria-hidden="true" />

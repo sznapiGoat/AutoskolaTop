@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const initial: InquiryState = { status: "idle" };
 
 const field =
-  "w-full rounded-xl border bg-surface px-4 py-3 text-base text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20";
+  "w-full rounded-xl border bg-surface px-4 py-3 text-base text-ink placeholder:text-muted transition-colors focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20";
 
 function Field({
   id,

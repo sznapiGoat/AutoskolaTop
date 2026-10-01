@@ -16,7 +16,9 @@
   --danger: #c2410c;
   --silver: #a7a7a7;
   --accent: #f26419;
-  --accent-hover: #d9530e;
+  /* filled buttons and small orange text need AA contrast with white: 4.6:1 */
+  --accent-strong: #cc4a0a;
+  --accent-hover: #b4470a;
   --accent-text: #b4470a;
   --accent-soft: #fdeadf;
   --on-accent: #ffffff;
@@ -59,6 +61,7 @@
   --color-danger: var(--danger);
   --color-line: var(--line);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-hover: var(--accent-hover);
   --color-accent-text: var(--accent-text);
   --color-accent-soft: var(--accent-soft);
@@ -72,6 +75,11 @@
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
 
+  /*
+    Shape system: controls (buttons, icon buttons, tabs, search) are full pills;
+    cards, photos and panels use --radius-card; things inside a card
+    (thumbnails, list rows, icon tiles, inputs) use rounded-xl; badges rounded-md.
+  */
   --radius-card: 1.25rem;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 

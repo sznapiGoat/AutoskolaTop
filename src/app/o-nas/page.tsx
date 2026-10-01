@@ -70,7 +70,7 @@ export default function AboutPage() {
       />
 
       <section className="container-page pb-16">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] md:aspect-[21/9]">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] md:aspect-[21/9]">
           <Image
             src="/images/autoskola-top-vuz-mesto.webp"
             alt="Oranžový Renault Captur Autoškoly TOP s logem na dveřích projíždí městem"
@@ -134,7 +134,7 @@ export default function AboutPage() {
         <div className="container-page py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal from="left">
-              <p className="font-display text-lg font-semibold tracking-[0.04em] text-accent">Pomáháme</p>
+              <p className="font-display text-lg font-semibold tracking-[0.04em] text-accent-text">Pomáháme</p>
               <h2 id="pomahame-h" className="mt-3 font-display text-5xl font-bold md:text-6xl">
                 Jeden rok, jeden člověk, jeden řidičák
               </h2>
@@ -180,7 +180,7 @@ export default function AboutPage() {
           <RevealGroup className="mt-10 grid gap-8 md:grid-cols-4">
             {timeline.map((t) => (
               <RevealItem key={t.what} className="border-t-2 border-accent pt-5">
-                <p className="text-sm font-semibold text-accent">{t.when}</p>
+                <p className="text-sm font-semibold text-accent-text">{t.when}</p>
                 <h4 className="mt-2 font-display text-2xl font-bold">{t.what}</h4>
                 <p className="mt-2 text-muted">{t.text}</p>
               </RevealItem>

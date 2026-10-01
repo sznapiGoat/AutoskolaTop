@@ -44,7 +44,7 @@ export function FaqExplorer() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Hledat, třeba „zkouška“ nebo „splátky“"
-        className="mb-4 w-full rounded-full border border-line bg-white px-5 py-3.5 text-base text-ink transition-colors placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+        className="mb-4 w-full rounded-full border border-line bg-white px-5 py-3.5 text-base text-ink transition-colors placeholder:text-muted focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
       />
       <div
         role="tablist"
@@ -66,7 +66,7 @@ export function FaqExplorer() {
             {filter === tab && (
               <motion.span
                 layoutId="faq-tab"
-                className="absolute inset-0 -z-10 rounded-full bg-accent"
+                className="absolute inset-0 -z-10 rounded-full bg-accent-strong"
                 transition={{ type: "spring", stiffness: 400, damping: 34 }}
               />
             )}

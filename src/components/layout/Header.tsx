@@ -86,7 +86,7 @@ export function Header() {
                     onMouseEnter={() => setHovered(item.href)}
                     aria-current={active === item.href ? "page" : undefined}
                     className={cn(
-                      "relative block rounded-lg px-4 py-2 text-[0.95rem] font-medium transition-colors",
+                      "relative block rounded-full px-4 py-2 text-[0.95rem] font-medium transition-colors",
                       active === item.href ? "text-ink" : "text-muted hover:text-ink",
                     )}
                   >
@@ -107,7 +107,7 @@ export function Header() {
                         aria-expanded={dropdown}
                         aria-controls="sluzby-menu"
                         aria-label="Zobrazit jednotlivé služby"
-                        className="-ml-3 grid size-8 place-items-center rounded-md text-muted transition-colors hover:text-ink"
+                        className="-ml-3 grid size-8 place-items-center rounded-full text-muted transition-colors hover:text-ink"
                       >
                         <IconCaretDown size={14} className={cn("transition-transform", dropdown && "rotate-180")} />
                       </button>
@@ -128,11 +128,11 @@ export function Header() {
                                     <Link
                                       href={`/sluzby/${s.slug}`}
                                       className={cn(
-                                        "flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-surface-2",
+                                        "flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-surface-2",
                                         pathname === `/sluzby/${s.slug}` && "bg-surface-2",
                                       )}
                                     >
-                                      <span className="relative size-14 shrink-0 overflow-hidden rounded-md bg-surface-2">
+                                      <span className="relative size-14 shrink-0 overflow-hidden rounded-xl bg-surface-2">
                                         <Image src={s.image} alt="" fill sizes="56px" className="object-cover" />
                                       </span>
                                       <span>
@@ -146,7 +146,7 @@ export function Header() {
                                   </li>
                                 ))}
                               </ul>
-                              <div className="mt-2 flex items-center justify-between rounded-lg bg-surface-2 px-4 py-3 text-sm font-semibold">
+                              <div className="mt-2 flex items-center justify-between rounded-xl bg-surface-2 px-4 py-3 text-sm font-semibold">
                                 <Link href="/sluzby" className="group inline-flex items-center gap-1.5 hover:text-accent-text">
                                   Přehled služeb a průběh kurzu
                                   <IconArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
@@ -188,7 +188,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Zavřít menu" : "Otevřít menu"}
-              className="grid size-11 place-items-center rounded-lg border border-line bg-surface text-ink lg:hidden"
+              className="grid size-11 place-items-center rounded-full border border-line bg-surface text-ink lg:hidden"
             >
               {open ? <IconClose size={20} /> : <IconMenu size={20} />}
             </button>
