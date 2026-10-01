@@ -49,14 +49,16 @@ export function Hero() {
 
       <div className="container-page flex flex-1 flex-col justify-end pt-28 pb-28 md:justify-center md:pt-40 md:pb-32">
         <FadeUp>
-          <h1 className="max-w-[14ch] font-display text-[2.4rem] leading-[1.04] font-bold tracking-[-0.025em] sm:text-6xl lg:text-7xl">
-            Řidičák v&nbsp;Rakovníku. Bez stresu, s&nbsp;výsledkem.
+          <h1 className="font-display text-[2.4rem] leading-[1.05] font-bold tracking-[-0.025em] sm:text-5xl lg:text-6xl">
+            Řidičák v&nbsp;Rakovníku.
+            <br />
+            Bez stresu, s&nbsp;výsledkem.
           </h1>
         </FadeUp>
         <FadeUp delay={0.15}>
-          <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-white/85">
-            Kurz skupiny B od {formatPrice(fromPrice)}, placený ve dvou splátkách. Jízda do Prahy je v ceně, učebnu máme
-            v{" "}centru, {site.address.street}.
+          <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-white/85">
+            Kurz skupiny B od {formatPrice(fromPrice)} ve dvou splátkách. Jízda do Prahy v ceně, učebna v centru
+            Rakovníka.
           </p>
         </FadeUp>
         <FadeUp delay={0.25} className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">

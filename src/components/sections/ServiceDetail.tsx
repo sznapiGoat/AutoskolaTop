@@ -44,7 +44,7 @@ function Body({ service }: { service: Service }) {
           {block.list && (
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {block.list.map((li) => (
-                <li key={li} className="flex gap-3 rounded-lg bg-surface-2 px-4 py-3 text-[0.95rem] leading-snug">
+                <li key={li} className="flex gap-3 rounded-xl bg-surface-2 px-4 py-3 text-[0.95rem] leading-snug">
                   <span aria-hidden="true" className="mt-2 h-0.5 w-3 shrink-0 bg-accent" />
                   {li}
                 </li>

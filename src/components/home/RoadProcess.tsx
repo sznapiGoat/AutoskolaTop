@@ -57,7 +57,7 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className={cn("pl-16 md:pl-0", right ? "md:col-start-2 md:pl-16" : "md:pr-16 md:text-right")}
                 >
-                  <span className="font-display text-sm font-semibold text-accent">
+                  <span className="font-display text-sm font-semibold text-accent-text">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-1 font-display text-2xl font-semibold md:text-3xl">{step.title}</h3>
@@ -72,7 +72,7 @@ export function RoadProcess({ showLink = false }: { showLink?: boolean }) {
           <div className="mt-16 md:text-center">
             <Link
               href="/sluzby#prubeh"
-              className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
+              className="group inline-flex items-center gap-2 font-semibold text-accent-text hover:text-accent-hover"
             >
               Jak přesně kurz probíhá
               <IconArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />

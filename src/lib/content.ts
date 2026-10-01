@@ -380,7 +380,7 @@ export const faqs: Faq[] = [
     id: "cena-obsahuje",
     category: "Platba",
     q: "Co cena kurzu obsahuje?",
-    a: "Kompletní výuku a výcvik včetně zkoušky nanečisto, jízdy do Prahy a první závěrečné zkoušky. Cena je konečná, nezahrnuje jen správní poplatek za zkoušku, který se platí úřadu.",
+    a: "Kompletní výuku a výcvik včetně zkoušky nanečisto, jízdy do Prahy a první závěrečné zkoušky. Cena je konečná. Navíc platíte jen správní poplatek za zkoušku, a to přímo úřadu.",
   },
   {
     id: "kamarad",
@@ -398,7 +398,7 @@ export const faqs: Faq[] = [
     id: "nanecisto",
     category: "Zkouška",
     q: "K čemu je zkouška nanečisto?",
-    a: "Projdete si celou zkoušku v klidu a bez stresu, ještě než vás čeká ta ostrá. Uvidíte, jak probíhá, a víme, co ještě doladit.",
+    a: "Projdete si celou zkoušku v klidu a bez stresu, ještě než vás čeká ta ostrá. Uvidíte, jak probíhá, a my zjistíme, co ještě doladit.",
   },
   {
     id: "neuspech",

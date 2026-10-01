@@ -25,16 +25,11 @@ export function WhyUs() {
             Ottově ulici, v budově Raportu ve 2. patře.
           </p>
 
-          <RevealGroup className="mt-10 border-t border-line">
-            {reasons.map((r, i) => (
-              <RevealItem key={r.title} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-line py-6">
-                <span className="font-display text-lg font-semibold text-accent-text tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-semibold">{r.title}</h3>
-                  <p className="mt-1.5 leading-relaxed text-muted">{r.text}</p>
-                </div>
+          <RevealGroup className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            {reasons.map((r) => (
+              <RevealItem key={r.title}>
+                <h3 className="font-display text-xl font-semibold">{r.title}</h3>
+                <p className="mt-1.5 leading-relaxed text-muted">{r.text}</p>
               </RevealItem>
             ))}
           </RevealGroup>

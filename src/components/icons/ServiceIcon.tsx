@@ -37,7 +37,7 @@ export function IconTile({
   return (
     <span
       className={cn(
-        "grid size-14 shrink-0 place-items-center rounded-2xl",
+        "grid size-14 shrink-0 place-items-center rounded-xl",
         tone === "light" && "bg-accent-soft text-ink [--icon-knock:var(--accent-soft)]",
         tone === "dark" && "bg-panel text-panel-ink [--icon-knock:var(--panel)]",
         tone === "accent" && "bg-accent text-on-accent [--icon-accent:var(--on-accent)] [--icon-knock:var(--accent)]",

@@ -60,7 +60,7 @@ export default async function ServicePage({ params }: Props) {
                 soupravu do 4 250 kg potřebujete rozšíření B96, pro ještě těžší skupinu B+E.
               </p>
             </div>
-            <div className="relative mx-auto aspect-[541/960] w-36 overflow-hidden rounded-lg">
+            <div className="relative mx-auto aspect-[541/960] w-36 overflow-hidden rounded-xl">
               <Image
                 src="/images/pripojne-vozidlo-skupina-b.webp"
                 alt="Infografika Autoškoly TOP: přípojné vozidlo pro skupiny B, B96 a B+E"
@@ -122,7 +122,7 @@ export default async function ServicePage({ params }: Props) {
                 href={`/sluzby/${s.slug}`}
                 className="group flex items-center gap-4 rounded-[var(--radius-card)] border border-line bg-surface p-3 transition-colors hover:border-ink"
               >
-                <div className="relative size-20 shrink-0 overflow-hidden rounded-lg">
+                <div className="relative size-20 shrink-0 overflow-hidden rounded-xl">
                   <Image src={s.image} alt="" fill sizes="80px" className="object-cover" />
                 </div>
                 <div>
