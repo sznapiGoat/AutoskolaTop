@@ -11,6 +11,7 @@ const slides: HeroSlide[] = [
     alt: "Instruktor Autoškoly TOP za volantem oranžového výcvikového vozu v Rakovníku",
     label: "Výcvikový vůz",
     position: "62% 55%",
+    mobilePosition: "60% 50%",
     drift: { x: "-2%", y: "-1%" },
   },
   {
@@ -18,6 +19,7 @@ const slides: HeroSlide[] = [
     alt: "Oranžový Renault Captur Autoškoly TOP v městském provozu",
     label: "Jízdy v provozu",
     position: "30% 60%",
+    mobilePosition: "46% 60%",
     drift: { x: "2%", y: "-1.5%" },
   },
   {
@@ -25,21 +27,31 @@ const slides: HeroSlide[] = [
     alt: "Učebna Autoškoly TOP s logem na stěně a připravenými materiály",
     label: "Učebna v centru",
     position: "50% 40%",
+    mobilePosition: "50% 35%",
     drift: { x: "-1.5%", y: "1%" },
   },
 ];
 
 const fromPrice = Math.min(...plans.map((p) => p.price));
 
-/** The whole first screen is the photo; the header floats over it. Words and one button, nothing else. */
+/**
+ * Desktop: the whole first screen is the photo and the header floats over it.
+ * Phones: a portrait screen would crop the landscape photos to a blurry sliver,
+ * so the photo is a sharp square on top that fades into the text below.
+ */
 export function Hero() {
   return (
-    <section className="relative isolate -mt-[4.75rem] flex min-h-[max(40rem,100svh)] flex-col overflow-hidden text-white">
+    <section className="relative isolate -mt-[4.75rem] flex flex-col overflow-hidden bg-road text-white md:min-h-[max(40rem,100svh)]">
       <HeroSlideshow slides={slides} />
-      {/* legibility: dark from the left on desktop, from the bottom on phones */}
+      {/* phones: the square photo fades into the dark text area below it */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-t from-[#0b0e13]/90 via-[#0b0e13]/45 to-[#0b0e13]/10 md:bg-linear-to-r md:from-[#0b0e13]/80 md:via-[#0b0e13]/45 md:to-transparent"
+        className="absolute inset-x-0 top-0 -z-10 aspect-square bg-linear-to-t from-road via-road/20 via-35% to-transparent md:hidden"
+      />
+      {/* desktop: dark from the left behind the text */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 hidden bg-linear-to-r from-[#0b0e13]/80 via-[#0b0e13]/45 to-transparent md:block"
       />
       {/* keeps the transparent header readable on bright skies */}
       <div
@@ -47,7 +59,7 @@ export function Hero() {
         className="absolute inset-x-0 top-0 -z-10 h-44 bg-linear-to-b from-[#0b0e13]/55 to-transparent"
       />
 
-      <div className="container-page flex flex-1 flex-col justify-end pt-28 pb-28 md:justify-center md:pt-40 md:pb-32">
+      <div className="container-page flex flex-1 flex-col justify-end pt-[calc(100vw-4rem)] pb-14 md:justify-center md:pt-40 md:pb-32">
         <FadeUp>
           <h1 className="font-display text-[2.4rem] leading-[1.05] font-bold tracking-[-0.025em] sm:text-5xl lg:text-6xl">
             Řidičák v&nbsp;Rakovníku.

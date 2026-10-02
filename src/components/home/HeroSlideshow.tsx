@@ -9,8 +9,10 @@ export type HeroSlide = {
   alt: string;
   /** Short label in the switcher. */
   label: string;
-  /** object-position, so the subject stays clear of the headline. */
+  /** object-position on desktop, so the subject stays clear of the headline. */
   position: string;
+  /** object-position for the square crop on phones: keep the subject centred. */
+  mobilePosition: string;
   /** Ken Burns drift direction. */
   drift?: { x: string; y: string };
 };
@@ -65,7 +67,7 @@ export function HeroSlideshow({ slides }: { slides: HeroSlide[] }) {
   return (
     <>
       <div
-        className="absolute inset-0 -z-20 overflow-hidden bg-road"
+        className="absolute inset-x-0 top-0 -z-20 aspect-square overflow-hidden bg-road md:inset-0 md:aspect-auto"
         aria-roledescription="prezentace"
         aria-label="Fotky z autoškoly"
       >
@@ -94,8 +96,8 @@ export function HeroSlideshow({ slides }: { slides: HeroSlide[] }) {
                   priority={i === 0}
                   quality={85}
                   sizes="100vw"
-                  className="object-cover"
-                  style={{ objectPosition: s.position }}
+                  className="object-cover object-[var(--pos-m)] md:object-[var(--pos)]"
+                  style={{ "--pos": s.position, "--pos-m": s.mobilePosition } as CSSProperties}
                 />
               </div>
             </div>
